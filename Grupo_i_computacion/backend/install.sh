@@ -1,2 +1,3 @@
 virtualenv -p python3 venv
-. /env/bin/activate
+./venv/bin/activate
+pip3 install -r requirements.txt

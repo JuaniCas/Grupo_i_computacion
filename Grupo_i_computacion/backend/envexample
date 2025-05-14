@@ -1,0 +1,2 @@
+export PORT= "colocar el puerto a usar"
+export NAME_APP= "user de la BD"

@@ -1,3 +1,2 @@
-source scripts/activate
+source venv/bin/activate
 python app.py 
-source venv/bin/activate  # Activa el entorno virtual

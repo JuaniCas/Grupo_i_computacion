@@ -20,7 +20,6 @@ VALORACION = {
     2:{'usuario': 'Juanchi', 'producto': 2, 'valoracion': 4},
 }
 
-#Definir el recurso Animal
 class Usuario(Resource):
     def get(self, id):
         if int(id) in USUARIOS:
@@ -37,12 +36,12 @@ class Usuario(Resource):
     
     def put(self, id):
         if int(id) in USUARIOS:
-            animal = USUARIOS[int(id)]
+            Usuario = USUARIOS[int(id)]
             data = request.get_json()
-            animal.update(data)
-            return 'Animal editado con exito', 201
+            Usuario.update(data)
+            return 'Usuario editado con exito', 201
         
-        return 'El id que intentan editar es inexistente', 404
+        return 'El id que intenta editar es inexistente', 404
 
 class Usuarios(Resource):
     def get(self):

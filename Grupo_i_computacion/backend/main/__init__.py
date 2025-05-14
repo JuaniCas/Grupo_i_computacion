@@ -2,7 +2,7 @@ from flask import Flask
 from flask_restful import Api
 from dotenv import load_dotenv
 
-from .resources.recursos import Usuarios, Usuario, Productos, Producto, Pedidos, Pedido, Login, Logout, Notificacion, Valoracion
+import main.resources as resources
 api = Api()
 
 def create_app():
@@ -10,16 +10,16 @@ def create_app():
     load_dotenv()
 
     # Rutas
-    api.add_resource(Usuarios, "/usuarios")     # lista todos
-    api.add_resource(Usuario, "/usuario/<int:id>")  # un solo animal
-    api.add_resource(Productos, "/productos")   # lista todos
-    api.add_resource(Producto, "/producto/<int:id>")  # un solo animal
-    api.add_resource(Pedidos, "/pedidos")       # lista todos
-    api.add_resource(Pedido, "/pedido/<int:id>")    # un solo animal
-    api.add_resource(Login, "/login")           # login
-    api.add_resource(Logout, "/logout")         # logout
-    api.add_resource(Notificacion, "/notificacion")  # notificaciones
-    api.add_resource(Valoracion, "/valoracion")  # valoraciones
+    api.add_resource(resources.UsuariosResource, "/usuarios")     
+    api.add_resource(resources.UsuarioResource, "/usuario/<int:id>")  
+    api.add_resource(resources.ProductosResource, "/productos")   
+    api.add_resource(resources.ProductoResource, "/producto/<int:id>")  
+    api.add_resource(resources.PedidosResource, "/pedidos")       
+    api.add_resource(resources.PedidoResource, "/pedido/<int:id>")    
+    api.add_resource(resources.LoginResource, "/login")           
+    api.add_resource(resources.LogoutResource, "/logout")         
+    api.add_resource(resources.NotificacionResource, "/notificacion")  
+    api.add_resource(resources.ValoracionResource, "/valoracion") 
 
     api.init_app(app)
     return app
