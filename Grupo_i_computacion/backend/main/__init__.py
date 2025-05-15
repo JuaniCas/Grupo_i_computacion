@@ -1,14 +1,29 @@
 from flask import Flask
 from flask_restful import Api
 from dotenv import load_dotenv
+from flask_sqlalchemy import SQLAlchemy
 
-import main.resources as resources
+
+import os
+
 api = Api()
+
+db = SQLAlchemy()
+
+
 
 def create_app():
     app = Flask(__name__)
     load_dotenv()
 
+    if not os.path.exists(os.getenv("DATABASE_PATH") + os.getenv("DATABASE_NAME")):
+        os.makedirs(os.getenv("DATABASE_PATH") + os.getenv("DATABASE_NAME"))
+    
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////" + os.getenv("DATABASE_PATH") + os.getenv("DATABASE_NAME")
+    db.init_app(app)
+    
+    import main.resources as resources
     # Rutas
     api.add_resource(resources.UsuariosResource, "/usuarios")     
     api.add_resource(resources.UsuarioResource, "/usuario/<int:id>")  
