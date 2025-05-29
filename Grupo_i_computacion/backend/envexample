@@ -1,2 +1,3 @@
 export PORT= "colocar el puerto a usar"
+export DATABASE_PATH = /path/absoluto/
 export NAME_APP= "user de la BD"
