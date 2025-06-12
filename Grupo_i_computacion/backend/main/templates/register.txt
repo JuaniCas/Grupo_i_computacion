@@ -1,0 +1,9 @@
+Bienvenido {{usuario.nombre}} {{usuario.apellido}}!
+
+Gracias por registrarte.
+
+Ahora podras:
+
+*Ver nuestros productos
+*Realizar un pedido
+*Realizar una valoración
