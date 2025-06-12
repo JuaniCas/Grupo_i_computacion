@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restful import Api
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
+from flask_jwt_extended import JWTManager
 
 
 import os
@@ -10,6 +11,7 @@ api = Api()
 
 db = SQLAlchemy()
 
+jwt = JWTManager()
 
 
 def create_app():
@@ -22,9 +24,10 @@ def create_app():
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///"+os.getenv("DATABASE_PATH")+os.getenv("DATABASE_NAME")
     db.init_app(app)
+
     
     import main.resources as resources
-    # Rutas
+
     api.add_resource(resources.UsuariosResource, "/usuarios")     
     api.add_resource(resources.UsuarioResource, "/usuario/<int:id>")  
     api.add_resource(resources.ProductosResource, "/productos")   
@@ -40,4 +43,14 @@ def create_app():
     api.add_resource(resources.vinculacionResource, "/vinculacion")
 
     api.init_app(app)
+    
+    app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
+
+    app.config['JWT_ACCESS_TOKEN_EXPIRES'] = int(os.getenv('JWT_ACCESS_TOKEN_EXPIRES'))
+    jwt.init_app(app)
+
+    from main.auth import rutas
+    app.register_blueprint(rutas.auth)
+
+    
     return app

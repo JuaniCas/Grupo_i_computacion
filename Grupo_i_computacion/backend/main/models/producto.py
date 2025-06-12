@@ -50,6 +50,7 @@ class productos(db.Model):
             'id_producto': self.id_producto,
             'id_categoria': self.id_categoria,
             'nombre': str(self.nombre),
+            'descripcion': str(self.descripcion),
             'precio': self.precio
         }
         

@@ -2,57 +2,48 @@ from flask_restful import Resource
 from flask import request, jsonify
 from main.models import UsuariosModel
 from .. import db
-
-
-#USUARIOS = {
-#    1:{ 'id_usuario': 1, 'rol': 'CLIENTE', 'nombre': 'Diego', 'apellido': 'Maradona', 'email': 'diegomaradona@gmail.com', 'contraseña': 'pelusa123','direccion': 'UM', 'celular': 4526088, 'habilitado': True},
-#    2:{ 'id_usuario': 2, 'rol': 'ENCARGADO', 'nombre': 'Juan', 'apellido': 'Riquelme', 'email': 'juanriquelme@gmail.com', 'contraseña': 'roman123','direccion': 'Las Catitas', 'celular': 2634589045, 'habilitado': False}
-#    }
+from main.auth.decoradores import role_required
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 
 
 class Usuario(Resource):
+    @role_required(roles=['admin', 'cliente'])
     def get(self, id):
         Usuario = db.session.query(UsuariosModel).get_or_404(id)
+        rol = get_jwt().get('rol')
+        if rol == 'cliente' and Usuario.id_usuario != get_jwt_identity():
+            return {'message': 'No tienes permiso para ver este usuario.'}, 403
         return Usuario.to_json_complete()
+       
         
-        #if int(id) in USUARIOS:
-        
-        #    return USUARIOS[int(id)]
-        
-        #return 'El id es inexistente', 404
-        
+    @role_required(roles=['admin', 'cliente'])
     def delete(self, id): 
         usuario = db.session.query(UsuariosModel).get_or_404(id)
+        rol = get_jwt().get('rol')
+        if rol == 'cliente' and usuario.id_usuario != get_jwt_identity():
+            return {'message': 'No tienes permiso para eliminar este usuario.'}, 403
         db.session.delete(usuario)
         db.session.commit()
         return '', 204
     
-        #if int(id) in USUARIOS:
-        #    del USUARIOS[int(id)]
-        #    return 'Eliminado con exito', 200
-        
-        #return 'El id a eliminar es inexistente', 404
     
+    @role_required(roles=['admin', 'cliente'])
     def put(self, id):
         usuario = db.session.query(UsuariosModel).get_or_404(id)
         data = request.get_json()
         for key, value in data.items():
             setattr(usuario, key, value)
+        rol = get_jwt().get('rol')
+        if rol == 'cliente' and usuario.id_usuario != get_jwt_identity():
+            return {'message': 'No tienes permiso para modificar este usuario.'}, 403
         db.session.add(usuario)
         db.session.commit()
         return usuario.to_json(), 201
-    
-    
-        #if int(id) in USUARIOS:
-        #    Usuario = USUARIOS[int(id)]
-        #    data = request.get_json()
-        #    Usuario.update(data)
-        #    return 'Usuario editado con exito', 201
-        
-        #return 'El id que intenta editar es inexistente', 404
+
         
         
 class Usuarios(Resource):
+    @role_required(roles = ["admin"])
     def get(self):
         
         page = 1
@@ -87,13 +78,9 @@ class Usuarios(Resource):
                         'page': page
                        })
 
+    #lo borramos porque esto lo hariamos en la funcion register de auth.py?
     def post(self):
         usuario = UsuariosModel.from_json(request.get_json())
         db.session.add(usuario)
         db.session.commit()
         return usuario.to_json(), 201
-        
-        #usuario = request.get_json()
-        #id = int(max(USUARIOS.keys())) + 1
-        #USUARIOS[id] = usuario
-        #return USUARIOS[id], 201

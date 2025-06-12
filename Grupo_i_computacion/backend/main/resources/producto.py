@@ -2,14 +2,16 @@ from flask_restful import Resource
 from flask import request, jsonify
 from main.models import ProductosModel
 from .. import db
-
+from main.auth.decoradores import role_required
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 
 class Producto(Resource):
+    @role_required(roles=['admin'])
     def get(self, id):
         producto = db.session.query(ProductosModel).get_or_404(id)
         return producto.to_json_complete()
 
-
+    role_required(roles=['admin'])
     def put(self, id):
         producto = db.session.query(ProductosModel).get_or_404(id)
         data = request.get_json()
@@ -21,7 +23,7 @@ class Producto(Resource):
         
         return producto.to_json(), 201
 
-
+    role_required(roles=['admin'])
     def delete(self, id):
         producto = db.session.query(ProductosModel).get_or_404(id)
         db.session.delete(producto)
@@ -31,6 +33,7 @@ class Producto(Resource):
         
 
 class Productos(Resource):
+    @jwt_required()
     def get(self):
         
         page = 1
@@ -60,7 +63,7 @@ class Productos(Resource):
                        'page': page
                        })
 
-
+    @role_required(roles=['admin'])
     def post(self):
         producto = ProductosModel.from_json(request.get_json())
         db.session.add(producto)

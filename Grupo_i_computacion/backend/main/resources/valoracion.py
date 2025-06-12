@@ -2,14 +2,12 @@ from flask_restful import Resource
 from flask import request, jsonify
 from main.models import ValoracionesModel
 from .. import db
+from main.auth.decoradores import role_required
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 
-
-#VALORACIONES = {
-#        1: { 'id_valoracion': 8, 'id_usuario': 9, 'id_producto': 10, 'valoracion': 10, 'descripcion': 'excelente comida', 'fecha': '10/10/2025' },
-#        2: { 'id_valoracion': 11, 'id_usuario': 12, 'id_producto': 13, 'valoracion': 1, 'descripcion': 'muy quemado el pan', 'fecha': '11/11/2025' }
-#}
 
 class Valoraciones(Resource):
+    @jwt_required()
     def post(self):
         valoracion = ValoracionesModel.from_json(request.get_json())
         db.session.add(valoracion)
@@ -17,11 +15,7 @@ class Valoraciones(Resource):
         
         return valoracion.to_json(), 201
         
-        #data = request.get_json()
-        #id = int(max(VALORACION.keys(), default=0)) + 1
-        #VALORACION[id] = data
-        #return {'message': 'Valoración agregada', 'data': data}, 201
-
+    @jwt_required()
     def get(self):
         
         page = 1
@@ -54,6 +48,7 @@ class Valoraciones(Resource):
                        })
     
 class Valoracion(Resource):
+    @jwt_required()
     def get(self, id):
         valoracion = db.session.query(ValoracionesModel).get_or_404(id)
         return valoracion.to_json()

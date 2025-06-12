@@ -2,14 +2,12 @@ from flask_restful import Resource
 from flask import request, jsonify
 from main.models import CategoriasModel
 from .. import db
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
+from main.auth.decoradores import role_required
 
-
-#CATEGORIAS = {
-#    1:{"id_categoria" : 2, "nombre" : "milanesas"},
-#    2:{"id_categoria" : 4, "nombre" : "lomos"}
-#}
 
 class Categorias(Resource):
+    
     def get(self):
         
         argumentos = request.args
@@ -22,7 +20,7 @@ class Categorias(Resource):
         
         return jsonify([categoria.to_json() for categoria in query])
 
-
+    @role_required(roles = ['admin'])
     def post(self):
         categoria = CategoriasModel.from_json(request.get_json())
         db.session.add(categoria)
@@ -30,16 +28,19 @@ class Categorias(Resource):
         return categoria.to_json(), 201
 
 class Categoria(Resource):
+    
     def get(self, id):
         categoria = db.session.query(CategoriasModel).get_or_404(id)
         return categoria.to_json_complete()
     
+    @role_required(roles = ['admin'])
     def delete(self, id):
         categoria = db.session.query(CategoriasModel).get_or_404(id)
         db.session.delete(categoria)
         db.session.commit()
         return '', 204
     
+    @role_required(roles = ['admin'])
     def put(self, id):
         categoria = db.session.query(CategoriasModel).get_or_404(id)
         data = request.get_json()

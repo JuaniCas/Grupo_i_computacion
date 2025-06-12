@@ -4,13 +4,17 @@ from main.models import PedidosModel, ProductosModel
 from .. import db
 from datetime import datetime
 from sqlalchemy import desc, func
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
+from main.auth.decoradores import role_required
 
 class Pedido(Resource):
+    @role_required(roles=['admin', 'cliente'])
     def get(self, id):
         pedido = db.session.query(PedidosModel).get_or_404(id)
         
         return pedido.to_json()
 
+    @jwt_required()
     def put(self, id):
         pedido = db.session.query(PedidosModel).get_or_404(id)
         data = request.get_json().items()
@@ -27,9 +31,12 @@ class Pedido(Resource):
         
         return pedido.to_json(), 201
 
-
+    @role_required(roles=['admin', 'cliente'])
     def delete(self, id):
         pedido = db.session.query(PedidosModel).get_or_404(id)
+        rol = get_jwt().get('rol')
+        if rol == 'cliente' and pedido.id_usuario != get_jwt_identity():
+            return {'message': 'No tienes permiso para eliminar este pedido.'}, 403
         db.session.delete(pedido)
         db.session.commit()
         
@@ -38,6 +45,7 @@ class Pedido(Resource):
 
 
 class Pedidos(Resource):
+    @role_required(roles=['admin'])
     def get(self):
         
         page = 1
@@ -70,6 +78,7 @@ class Pedidos(Resource):
                            'page': page
                        })
 
+    @jwt_required()
     def post(self):
         productos_ids = request.get_json().get('productos')
         pedido = PedidosModel.from_json(request.get_json())

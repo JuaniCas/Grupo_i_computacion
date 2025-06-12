@@ -1,12 +1,13 @@
 from .. import db
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class usuarios(db.Model):
     id_usuario = db.Column(db.Integer, primary_key=True)
-    rol = db.Column(db.String(50))
+    rol = db.Column(db.String(50), nullable=False, server_default='cliente')
     nombre = db.Column(db.String(50))
     apellido = db.Column(db.String(50))
-    email = db.Column(db.String(50))
-    contraseña = db.Column(db.String(50))
+    email = db.Column(db.String(50), unique=True, index = True, nullable=False)
+    contraseña = db.Column(db.String(50), nullable=False)
     direccion = db.Column(db.String(50))
     celular = db.Column(db.Integer)
     habilitado = db.Column(db.Boolean, default=False)
@@ -14,6 +15,17 @@ class usuarios(db.Model):
     valoraciones = db.relationship('valoraciones', back_populates='usuarios', cascade='all, delete-orphan')
     notificaciones = db.relationship('notificaciones', back_populates='usuarios', cascade='all, delete-orphan')
     pedidos = db.relationship('pedidos', back_populates='usuarios', cascade='all, delete-orphan')
+    
+    @property
+    def contraseña_plana(self):
+        raise AttributeError('La contraseña no se puede leer')
+    
+    @contraseña_plana.setter
+    def contraseña_plana(self, contraseña):
+        self.contraseña = generate_password_hash(contraseña)
+    
+    def verificar_contraseña(self, contraseña):
+        return check_password_hash(self.contraseña, contraseña)
     
     def __repr__(self):
         return '<usuarios %r >' % (self.nombre)
@@ -75,4 +87,12 @@ class usuarios(db.Model):
         celular = json_usuarios.get('celular')
         habilitado = json_usuarios.get('habilitado')
         
-        return usuarios(id_usuario=id_usuario, rol=rol, nombre=nombre, apellido=apellido, email=email, contraseña=contraseña, direccion=direccion, celular=celular, habilitado=habilitado)
+        return usuarios(id_usuario=id_usuario,
+                        rol=rol,
+                        nombre=nombre,
+                        apellido=apellido,
+                        email=email,
+                        contraseña_plana=contraseña,
+                        direccion=direccion,
+                        celular=celular,
+                        habilitado=habilitado)
