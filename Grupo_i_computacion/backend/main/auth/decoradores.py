@@ -2,7 +2,7 @@ from .. import jwt
 from flask import jsonify
 from flask_jwt_extended import verify_jwt_in_request, get_jwt
 from functools import wraps
-
+from main.models import UsuariosModel
 
 def role_required(roles):
     def decorator(fn):
@@ -22,13 +22,14 @@ def role_required(roles):
 
 
 @jwt.user_identity_loader
-def user_identity_lookup(usuario):
+def user_identity_lookup(identity):
     
-    return str(usuario.id_usuario)
+    return str(identity)
 
 
 @jwt.additional_claims_loader
-def add_claims_to_access_token(usuario):
+def add_claims_to_access_token(identity):
+    usuario = UsuariosModel.query.get(identity)
     claims = {
         'rol': usuario.rol,
         'id': usuario.id_usuario,

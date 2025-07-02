@@ -3,7 +3,7 @@ export DATABASE_PATH = /path/absoluto/
 export NAME_APP= "user de la BD"
 export JWT_SECRET_KEY = "clave_secreta"
 export JWT_ACCESS_TOKEN_EXPIRES = "tiempo de caducacion del token"
-
+export JWT_REFRESH_TOKEN_EXPIRES = "tiempo de caducacion del refresh token"
 
 export MAIL_SERVER = 'smtp.gmail.com' 
 export MAIL_PORT = '587' 
