@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menduca — Pedidos (panel empleados)</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+  :root{ --bg:#f5f3ee; --line:#e9e5df; }
+  body{ background:var(--bg); }
+  .top{ height:56px; }
+  .avatar{ width:32px;height:32px;border-radius:50%;object-fit:cover; }
+  .tile{ background:#fff; padding:1rem; border-top:1px solid var(--line); position:relative; }
+  .tile:first-child{ border-top:none; }
+  .ico{ width:44px;height:44px;border-radius:10px;background:#f3f3f3;display:grid;place-items:center;margin-right:.75rem;font-size:1.25rem; }
+  .card-wrap{ background:#fff; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+</style>
+</head>
+<body>
+<header class="app container top d-flex align-items-center justify-content-center position-relative">
+  <a href="pagina_principal_empleados.html" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
+  <strong>Pedidos</strong>
+  <img src="../../src/maradona_avatar.png" class="position-absolute end-0 me-2 avatar" alt="">
+</header>
+
+<main class="app container pb-5">
+  <div class="card-wrap shadow-sm">
+    <div class="tile d-flex align-items-center">
+      <div class="ico"><i class="bi bi-pencil-square"></i></div>
+      <div class="flex-grow-1">Cargar pedidos</div>
+      <a href="cargar_pedido.html" class="stretched-link" aria-label="Cargar pedidos"></a>
+    </div>
+    <div class="tile d-flex align-items-center">
+      <div class="ico"><i class="bi bi-eye"></i></div>
+      <div class="flex-grow-1">Ver y actualizar estado de pedidos</div>
+      <a href="estado_pedidos.html" class="stretched-link" aria-label="Ver estado de pedidos"></a>
+    </div>
+  </div>
+</main>
+</body>
+</html>

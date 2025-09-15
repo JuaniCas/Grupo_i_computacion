@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menduca — Empleados</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+  :root{ --bg:#f5f3ee; --line:#e9e5df; }
+  body{ background:var(--bg); }
+  .top{ height:56px; }
+  .avatar{ width:32px; height:32px; border-radius:50%; object-fit:cover; }
+  .row-card{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:.9rem; }
+  .row-card + .row-card{ margin-top:.75rem; }
+</style>
+</head>
+<body>
+<header class="app container top d-flex align-items-center justify-content-center position-relative">
+  <a href="pagina_principal_admin.html" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
+  <strong>Empleados</strong>
+  <div class="position-absolute end-0 me-2 d-flex align-items-center gap-2">
+    <img src="../../src/avatar_admin.png" class="avatar" alt="avatar">
+    <a href="editar_empleados.html" class="btn btn-danger btn-sm">Editar</a>
+  </div>
+</header>
+
+<main class="app container pb-5">
+  
+  <div class="row-card">
+    <div class="fw-semibold mb-1">Empleado #1</div>
+    <div class="small text-muted">Mail:</div>
+    <div class="small text-muted">Cargo:</div>
+  </div>
+  <div class="row-card">
+    <div class="fw-semibold mb-1">Empleado #2</div>
+    <div class="small text-muted">Mail:</div>
+    <div class="small text-muted">Cargo:</div>
+  </div>
+  <div class="row-card">
+    <div class="fw-semibold mb-1">Empleado #3</div>
+    <div class="small text-muted">Mail:</div>
+    <div class="small text-muted">Cargo:</div>
+  </div>
+  <div class="row-card">
+    <div class="fw-semibold mb-1">Empleado #4</div>
+    <div class="small text-muted">Mail:</div>
+    <div class="small text-muted">Cargo:</div>
+  </div>
+  <div class="row-card">
+    <div class="fw-semibold mb-1">Empleado #5</div>
+    <div class="small text-muted">Mail:</div>
+    <div class="small text-muted">Cargo:</div>
+  </div>
+  <div class="row-card">
+    <div class="fw-semibold mb-1">Empleado #6</div>
+    <div class="small text-muted">Mail:</div>
+    <div class="small text-muted">Cargo:</div>
+  </div>
+
+  <nav class="mt-3" aria-label="Paginación">
+    <ul class="pagination pagination-sm justify-content-center">
+      <li class="page-item active"><span class="page-link">1</span></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item disabled"><span class="page-link">…</span></li>
+      <li class="page-item"><a class="page-link" href="#">16</a></li>
+      <li class="page-item"><a class="page-link" href="#">17</a></li>
+    </ul>
+  </nav>
+</main>
+</body>
+</html>
