@@ -1,0 +1,8 @@
+  :root{
+      --bg-cream:#f6f1e7;
+      --card-peach:#f6d6bf;
+      --brand:#1f1f1f;
+      --radius:16px;
+    }
+    body{ background:var(--bg-cream); }
+    .tagline{ color:#6b6b6b; }
