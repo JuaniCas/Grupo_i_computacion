@@ -1,0 +1,7 @@
+  :root{ --bg:#f5f3ee; --accent:#3aa45b; }
+  body{ background:var(--bg); }
+  .chip{ border-radius:999px; }
+  .prod-img{ width:84px;height:84px;border-radius:12px;object-fit:cover; }
+  .star{ color:#ffb703; }
+  .scroll-x{ overflow-x:auto; white-space:nowrap; }
+  .scroll-x .btn{ margin-right:.5rem; }
