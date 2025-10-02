@@ -1,0 +1,21 @@
+  :root{ --bg:#f5f3ee; --accent:#3aa45b; --muted:#e9e5ff; }
+  body{ background:var(--bg); }
+  .topbar{ height:56px; }
+  .avatar {
+    position: relative;
+    width: 120px;
+    height: 120px;
+  }
+  .cam-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(20%, 20%);
+  border: 1px solid #ccc;
+  }
+  .img-profile {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  border: 2px solid #dee2e6; 
+  }

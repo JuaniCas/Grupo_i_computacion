@@ -1,0 +1,47 @@
+:root{
+	--bg:#f5f3ee; --line:#e9e5df;
+	--pend:#e7d38e;         /* Pendiente (amarillo suave)  */
+	--prep:#6b5734;         /* En preparación (marrón más oscuro) */
+	--listo:#b6f3c1;        /* Listo (verde claro más saturado) */
+	--entregado:#6fd36f;    /* Entregado (verde más fuerte) */
+}
+body{ background:var(--bg); }
+.top{ height:56px; }
+.avatar{ width:32px;height:32px;border-radius:50%;object-fit:cover; }
+.row-card{ background:#fff; border:1px solid var(--line); border-radius:10px; padding:.9rem; }
+.row-card + .row-card{ margin-top:.75rem; }
+.chip{
+	border-radius:10px;
+	width:170px;
+	height:44px;
+	font-weight:600;
+	font-size:1rem;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	text-align:center;
+	margin-left:16px;
+	box-sizing:border-box;
+	background:var(--chip-bg, #fff);
+	padding:0;
+}
+.chip-pend{
+	--chip-bg: #f9efc7;
+	color: #b59a3a;
+	border: 2px solid #b59a3a;
+}
+.chip-prep{
+	--chip-bg: #e2d3b8;
+	color: #3e2e13;
+	border: 2px solid #3e2e13;
+}
+.chip-listo{
+	--chip-bg: #d6f8e0;
+	color: #2e7d32;
+	border: 2px solid #2e7d32;
+}
+.chip-ent{
+	--chip-bg: #c6f7c6;
+	color: #267326;
+	border: 2px solid #267326;
+}

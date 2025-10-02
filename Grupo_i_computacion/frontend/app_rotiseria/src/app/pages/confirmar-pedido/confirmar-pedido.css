@@ -1,0 +1,6 @@
+  :root{ --bg:#f5f3ee; --accent:#3aa45b; --border:#ece7df; }
+  body{ background:var(--bg); }
+  .topbar{ height:56px; }
+  .pill{ background:#fff; border:1px solid var(--border); border-radius:12px; }
+  .card-like{ background:#fff; border-radius:14px; padding:1rem; box-shadow:0 2px 10px rgba(0,0,0,.04); }
+  .btn-accent{ background:var(--accent); border:0; }

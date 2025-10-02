@@ -1,0 +1,18 @@
+  :root{ --bg:#f5f3ee; --accent:#3aa45b; }
+  body{ background:var(--bg); }
+  .topbar{ height:56px; }
+  .star{ color:#ffb703; }
+  .prod-img{ width:100%; border-radius:14px; object-fit:cover; box-shadow:0 6px 18px rgba(0,0,0,.08); }
+  .img-wrap{ position:relative; }
+  .img-badge{
+    position:absolute; left:50%; transform:translateX(-50%);
+    bottom:-14px; background:#ffd966; color:#4b3000;
+    border-radius:10px; padding:.25rem .6rem; font-weight:700;
+    box-shadow:0 2px 8px rgba(0,0,0,.12);
+  }
+  .desc{
+    font-style:italic; font-weight:600; line-height:1.55;
+    text-align:justify;
+  }
+  .btn-accent{ background:var(--accent); border:0; }
+  .card-like{ background:#fff; border-radius:16px; padding:1rem; }

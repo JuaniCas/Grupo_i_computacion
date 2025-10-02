@@ -1,0 +1,42 @@
+<header class="container py-3 d-flex align-items-center">
+  <div class="input-group">
+    <span class="input-group-text bg-white"><i class="bi bi-search"></i></span>
+    <input class="form-control" placeholder="Buscar" autofocus>
+    <a class="btn btn-link text-decoration-none" routerLink="/pagina_principal">Cancelar</a>
+  </div>
+</header>
+
+<main class="container pb-5">
+  <section class="mb-3">
+    <div class="d-flex align-items-center mb-2">
+      <i class="bi bi-fire text-warning me-2"></i><strong>Popular</strong>
+    </div>
+    <div class="d-flex flex-wrap gap-2">
+      <a href="resultados.html" routerLink="/resultados" class="btn btn-outline-secondary chip">Pizzas</a>
+      <a href="resultados.html" routerLink="/resultados" class="btn btn-outline-secondary chip">Arroz</a>
+      <a href="resultados.html" routerLink="/resultados" class="btn btn-outline-secondary chip">Pollo</a>
+      <a href="resultados.html" routerLink="/resultados" class="btn btn-outline-secondary chip">Hamburguesa</a>
+      <a href="resultados.html" routerLink="/resultados" class="btn btn-outline-secondary chip">Lomo</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="d-flex align-items-center mb-2">
+      <i class="bi bi-clock-history me-2"></i><strong>Búsquedas recientes</strong>
+    </div>
+    <ul class="list-group" id="recientes">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Asado <button class="btn btn-sm btn-link text-muted p-0 borrar"><i class="bi bi-x-lg"></i></button>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Lomo Especial <button class="btn btn-sm btn-link text-muted p-0 borrar"><i class="bi bi-x-lg"></i></button>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Patitas de pollo <button class="btn btn-sm btn-link text-muted p-0 borrar"><i class="bi bi-x-lg"></i></button>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Pizza <button class="btn btn-sm btn-link text-muted p-0 borrar"><i class="bi bi-x-lg"></i></button>
+      </li>
+    </ul>
+  </section>
+</main>

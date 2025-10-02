@@ -1,0 +1,12 @@
+    :root{
+      --bg-cream:#f6f1e7;
+      --card-peach:#f6d6bf;
+      --danger:#d32f2f;
+      --radius:16px;
+    }
+    body{ background:var(--bg-cream); }
+    .error-icon{
+      width:88px;height:88px;border:3px solid var(--danger); border-radius:12px;
+      display:grid;place-items:center; margin:1.25rem auto;
+    }
+    .error-icon i{ font-size:40px;color:var(--danger); }

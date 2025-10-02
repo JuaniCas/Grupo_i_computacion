@@ -1,0 +1,29 @@
+<header class="app container top d-flex align-items-center justify-content-center position-relative">
+	<a routerLink="/empleados_pedidos" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
+	<strong>Estado de pedidos</strong>
+	<img src="assets/maradona_avatar.png" class="position-absolute end-0 me-2 avatar" alt="avatar empleado">
+</header>
+
+<main class="app container pb-5">
+	<article class="row-card position-relative" *ngFor="let pedido of pedidos">
+		<div class="d-flex justify-content-between">
+			<div>
+				<div class="fw-semibold">Pedido #{{pedido.numero}}</div>
+				<div class="small text-muted">Usuario:<br>Dirección:</div>
+			</div>
+			<span class="chip" [ngClass]="pedido.estadoClass">{{pedido.estado}}</span>
+		</div>
+		<a routerLink="/actualizar_estado" class="stretched-link" [attr.aria-label]="'Abrir pedido #' + pedido.numero"></a>
+	</article>
+
+	<nav class="mt-3" aria-label="Paginación">
+		<ul class="pagination pagination-sm justify-content-center">
+			   <li class="page-item active"><span class="page-link">1</span></li>
+			   <li class="page-item"><button type="button" class="page-link">2</button></li>
+			   <li class="page-item"><button type="button" class="page-link">3</button></li>
+			   <li class="page-item disabled"><span class="page-link">…</span></li>
+			   <li class="page-item"><button type="button" class="page-link">16</button></li>
+			   <li class="page-item"><button type="button" class="page-link">17</button></li>
+		</ul>
+	</nav>
+</main>

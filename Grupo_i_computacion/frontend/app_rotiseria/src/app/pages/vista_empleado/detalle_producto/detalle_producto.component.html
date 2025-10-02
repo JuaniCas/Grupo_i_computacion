@@ -1,0 +1,39 @@
+<header class="container topbar d-flex align-items-center justify-content-center position-relative">
+	<a routerLink="/cargar_pedido" class="position-absolute start-0 ms-2 text-success"><i class="bi bi-chevron-left"></i></a>
+	<strong>Detalles del producto</strong>
+	<a routerLink="/cargar_pedido" class="position-absolute end-0 me-2 text-secondary"><i class="bi bi-x-lg"></i></a>
+</header>
+
+<main class="container pb-5">
+	<div class="row justify-content-center">
+		<div class="col-12 col-sm-8 col-md-6">
+			<div class="card-like mb-3">
+				<div class="d-flex justify-content-between align-items-start">
+					<div>
+						<div class="fw-semibold">Hamburguesa doble</div>
+						<div class="small mt-1">
+							<i class="bi bi-star-fill star"></i>
+							<i class="bi bi-star-fill star"></i>
+							<i class="bi bi-star-fill star"></i>
+							<i class="bi bi-star-fill star"></i>
+							<i class="bi bi-star star"></i>
+						</div>
+					</div>
+					<strong class="text-muted">$18.000</strong>
+				</div>
+				<div class="img-wrap mt-3 mb-4">
+					<img src="assets/hamburguesa_doble.png" class="prod-img" alt="Hamburguesa doble">
+					<span class="img-badge">Doble Menduca</span>
+				</div>
+				<p class="desc">
+					Dos medallones de carne vacuna seleccionada, sellados a la plancha para bordes caramelizados y centro jugoso.
+					Doble cheddar fundido que envuelve la carne y panceta ahumada crocante para un golpe salino y textura perfecta.
+					Servida en pan de papa tibio y dorado. Un clásico contundente y equilibrado: sabor profundo, mordida impecable.
+				</p>
+				<div class="d-grid mt-4">
+					<a routerLink="/carrito_actual" class="btn btn-success btn-lg rounded-3">Agregar al carrito</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

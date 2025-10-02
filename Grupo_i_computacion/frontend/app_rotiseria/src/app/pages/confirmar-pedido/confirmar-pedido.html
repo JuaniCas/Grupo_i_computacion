@@ -1,0 +1,30 @@
+<header class="container topbar d-flex align-items-center justify-content-center position-relative">
+  <a routerLink="/carrito_actual" class="position-absolute start-0 ms-2 text-success"><i class="bi bi-chevron-left"></i></a>
+  <strong>Confirmá tu pedido</strong>
+  <a routerLink="/pagina_principal" class="position-absolute end-0 me-2 text-secondary"><i class="bi bi-x-lg"></i></a>
+</header>
+
+<main class="container pb-5">
+
+  <div class="pill text-center py-2 mb-3 small fw-semibold">Retiro en el local</div>
+
+  <section class="card-like mb-3">
+    <div class="fw-semibold mb-2">Datos del retiro:</div>
+    <p class="mb-3 text-muted">
+      Av. Boulogne Sur Mer 683, Mendoza
+    </p>
+    <div class="fw-semibold mb-1">Te contactaremos al:</div>
+    <p class="mb-0 text-muted">-</p>
+  </section>
+
+  <div class="text-center my-4">Pago en efectivo</div>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="fw-bold fs-5">Total:</div>
+    <div class="text-muted fs-5">$18.000 <span class="small">ARS</span></div>
+  </div>
+
+  <div class="d-grid">
+    <a routerLink="/pedido_confirmado" class="btn btn-success btn-lg rounded-3">Realizar pedido...</a>
+  </div>
+</main>

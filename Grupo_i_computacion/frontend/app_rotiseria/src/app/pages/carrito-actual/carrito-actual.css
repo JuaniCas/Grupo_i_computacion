@@ -1,0 +1,17 @@
+  :root{ --bg:#f5f3ee; --accent:#3aa45b; --border:#ece7df; }
+  body{ background:var(--bg); }
+  .topbar{ height:56px; }
+  .pill{ background:#fff; border:1px solid var(--border); border-radius:12px; }
+  .prod-img{ width:110px; height:78px; border-radius:10px; object-fit:cover; }
+  .img-wrap{ position:relative; display:inline-block; }
+  .img-price{
+    position:absolute; right:8px; top:6px; font-weight:700;
+    font-size:.9rem; color:#fff; background:rgba(0,0,0,.55);
+    padding:.1rem .35rem; border-radius:6px;
+  }
+  .img-badge{
+    display:inline-block; margin-top:.4rem;
+    background:#ffd966; color:#4b3000; font-weight:700;
+    padding:.15rem .5rem; border-radius:8px;
+  }
+  .btn-accent{ background-color:var(--accent) !important; border:0 !important; }

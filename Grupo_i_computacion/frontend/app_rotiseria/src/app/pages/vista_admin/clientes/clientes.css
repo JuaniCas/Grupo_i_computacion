@@ -1,0 +1,9 @@
+  :root{ --bg:#f5f3ee; --line:#e9e5df; --chip:#d9f3e2; --chip-b:#9ad4b6; }
+  body{ background:var(--bg); }
+  .top{ height:56px; }
+  .avatar{ width:32px;height:32px;border-radius:50%;object-fit:cover; }
+  .row-card{ background:#fff; border:1px solid var(--line); border-radius:10px; padding:.9rem; }
+  .row-card + .row-card{ margin-top:.75rem; }
+  .link-red{ color:#d32f2f; text-decoration:none; font-weight:600; }
+  .link-red:hover{ text-decoration:underline; }
+  .chip-val{ background:var(--chip); border:1px solid var(--chip-b); border-radius:999px; padding:.15rem .6rem; font-weight:600; font-size:.85rem; }

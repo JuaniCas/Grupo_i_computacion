@@ -1,0 +1,58 @@
+<header class="topbar container d-flex align-items-center justify-content-center position-relative">
+  <a routerLink="pagina_principal" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
+  <strong>Carrito de compras</strong>
+</header>
+
+<main class="container pb-5">
+  <div class="small text-center text-muted mb-2">Retiro en el local</div>
+
+  <div class="alert alert-light border d-flex align-items-center gap-2">
+    <i class="bi bi-clock text-warning"></i>
+    <div><strong>Estado de tu pedido:</strong> <span class="badge text-bg-warning">Pendiente</span></div>
+  </div>
+
+  <article class="card border-0 shadow-sm mb-3">
+    <div class="card-body d-flex gap-3">
+      <img src="assets/hamburguesa_doble.png" class="prod-img" alt="Hamburguesa doble">
+      <div class="flex-grow-1">
+        <h6 class="mb-1">Doble Menduca</h6>
+        <div class="text-muted small mb-1">$18.000 ARS</div>
+        <div class="d-flex align-items-center gap-3">
+          <div class="btn-group btn-group-sm" role="group" aria-label="Cantidad">
+            <a class="btn btn-outline-secondary">-</a>
+            <span class="btn btn-outline-secondary disabled">1</span>
+            <a class="btn btn-outline-secondary">+</a>
+          </div>
+          <a class="btn btn-outline-danger btn-sm"><i class="bi bi-trash"></i></a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="card border-0 shadow-sm">
+    <div class="card-body">
+      <div class="d-flex align-items-center mb-2">
+        <i class="bi bi-hand-thumbs-up text-success me-2"></i>
+        <strong>Tu opinión nos interesa</strong>
+      </div>
+
+      <div id="rating" class="mb-2">
+        <i class="bi bi-star star" data-v="1"></i>
+        <i class="bi bi-star star" data-v="2"></i>
+        <i class="bi bi-star star" data-v="3"></i>
+        <i class="bi bi-star star" data-v="4"></i>
+        <i class="bi bi-star star" data-v="5"></i>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label small text-muted">Tu opinión</label>
+        <textarea class="form-control" rows="3" placeholder="Escribe tu opinion aqui"></textarea>
+      </div>
+
+      <div class="d-grid gap-2">
+        <a class="btn btn-success" routerLink="/pagina_principal">Confirmar</a>
+        <a class="btn btn-outline-dark" routerLink="/pagina_principal">Seguir comprando</a>
+      </div>
+    </div>
+  </div>
+</main>

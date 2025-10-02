@@ -1,0 +1,8 @@
+:root{ --bg:#f5f3ee; --line:#e9e5df; }
+body{ background:var(--bg); }
+.top{ height:56px; }
+.avatar{ width:32px;height:32px;border-radius:50%;object-fit:cover; }
+.tile{ background:#fff; padding:1rem; border-top:1px solid var(--line); position:relative; }
+.tile:first-child{ border-top:none; }
+.ico{ width:44px;height:44px;border-radius:10px;background:#f3f3f3;display:grid;place-items:center;margin-right:.75rem;font-size:1.25rem; }
+.card-wrap{ background:#fff; border:1px solid var(--line); border-radius:10px; overflow:hidden; }

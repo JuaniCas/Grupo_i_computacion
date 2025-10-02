@@ -1,0 +1,4 @@
+  :root{ --bg:#f5f3ee; }
+  body{ background:var(--bg); }
+  .prod-img{ width:84px;height:84px;border-radius:12px;object-fit:cover; }
+  .star{ color:#ffb703; }

@@ -1,0 +1,51 @@
+<header class="topbar container d-flex align-items-center justify-content-center position-relative">
+  <a routerLink="/perfil" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
+  <strong>Mi Perfil</strong>
+</header>
+
+<main class="container pb-5">
+  <div class="row justify-content-center">
+    <div class="col-11 col-sm-8 col-md-6">
+
+      <div class="d-flex flex-column align-items-center my-3">
+        <div class="avatar position-relative">
+          <img src="assets/maradona_avatar.png" alt="Avatar" class="rounded-circle img-profile">
+          <button class="btn btn-light btn-sm rounded-circle cam-btn">
+            <i class="bi bi-camera"></i>
+            </button>
+        </div>
+        <h5 class="mt-3 mb-4">Leandro Paredes</h5>
+      </div>
+
+      <form class="card border-0 shadow-sm">
+        <div class="card-body">
+          <div class="mb-3">
+            <label class="form-label small text-muted">Correo</label>
+            <input type="email" class="form-control" value="leandro.paredes@ejemplo.com" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small text-muted">Contraseña</label>
+            <input type="password" class="form-control" placeholder="Nueva contraseña">
+          </div>
+          <div class="mb-3">
+            <label class="form-label small text-muted">Confirmar contraseña</label>
+            <input type="password" class="form-control" placeholder="Repetir contraseña">
+          </div>
+          <div class="mb-3">
+            <label class="form-label small text-muted">Dirección</label>
+            <input class="form-control" value="Av. Siempre Viva 123, Ciudad de Mendoza">
+          </div>
+          <div class="mb-3">
+            <label class="form-label small text-muted">Celular</label>
+            <input class="form-control" value="261 555-0123">
+          </div>
+
+          <div class="d-grid">
+            <a routerLink="/exito_perfil" class="btn btn-success">Confirmar</a>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</main>

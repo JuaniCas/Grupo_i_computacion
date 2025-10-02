@@ -1,0 +1,8 @@
+:root{ --bg:#f5f3ee; --card:#ffffff; --line:#e9e5df; --text:#1f1f1f; }
+body{ background:var(--bg); color:var(--text); }
+.top{ height:56px; }
+.avatar{ width:32px; height:32px; border-radius:50%; object-fit:cover; }
+.row-card{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:.9rem; }
+.row-card + .row-card{ margin-top:.75rem; }
+.red-link{ color:#d32f2f; text-decoration:none; font-weight:600; }
+.red-link:hover{ text-decoration:underline; }

@@ -1,0 +1,5 @@
+  :root{ --bg:#f5f3ee; --accent:#3aa45b; --warn:#d6b64e; }
+  body{ background:var(--bg); }
+  .topbar{ height:56px; }
+  .prod-img{ width:84px;height:84px;border-radius:12px;object-fit:cover; }
+  .star{ color:#ffb703; cursor:pointer; font-size:1.15rem; }

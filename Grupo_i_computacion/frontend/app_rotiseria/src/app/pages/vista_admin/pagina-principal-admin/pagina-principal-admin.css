@@ -1,0 +1,8 @@
+  :root{ --bg:#f5f3ee; --line:#e9e5df; --card:#fff; --text:#111; }
+  body{ background:var(--bg); color:var(--text); }
+  .top{ height:64px; }
+  .avatar{ width:48px; height:48px; border-radius:50%; object-fit:cover; }
+  .card-wrap{ background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .tile{ padding:1.1rem 1rem; display:flex; align-items:center; gap:.9rem; position:relative; }
+  .tile + .tile{ border-top:1px solid var(--line); }
+  .ico{ width:50px; height:50px; display:grid; place-items:center; font-size:1.7rem; color:#222; }
