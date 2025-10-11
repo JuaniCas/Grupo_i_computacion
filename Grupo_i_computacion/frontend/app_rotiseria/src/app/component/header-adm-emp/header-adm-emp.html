@@ -1,0 +1,23 @@
+<header class="container top d-flex align-items-center gap-3">
+  
+  <div class="d-flex align-items-center gap-2">
+    <img
+      class="avatar"
+      [src]="avatarSrc"
+      [alt]="title"
+      loading="lazy"
+    />
+    <h4 class="m-0 fw-semibold">{{ title }}</h4>
+  </div>
+
+  
+  <ng-container *ngIf="closeLink as link">
+    <a
+      class="btn btn-outline-secondary btn-sm ms-auto"
+      [routerLink]="link"
+      aria-label="Ir a {{ (title || 'página anterior') }}"
+    >
+      <i class="bi bi-x-lg"></i>
+    </a>
+  </ng-container>
+</header>

@@ -1,14 +1,8 @@
-<header class="container top d-flex align-items-center justify-content-between">
-	<div class="d-flex align-items-center gap-2">
-		<img src="assets/maradona_avatar.png" alt="Empleado" class="avatar">
-		<h4 class="m-0 fw-semibold">Empleados</h4>
-	</div>
-		<a
-		 class="btn btn-outline-secondary btn-sm"
-		 aria-label="Ir a iniciar sesión">
-		<i class="bi bi-x-lg"></i>
-	</a>
-</header>
+<header-adm-emp
+  [title]="'Empleado'"
+  [avatarSrc]="'assets/maradona_avatar.png'"
+  [closeLink]="'/iniciar_sesion'"
+></header-adm-emp>
 
 <main class="container pb-5">
 	<div class="card shadow-sm">
