@@ -1,0 +1,16 @@
+/* src/app/component/card-fila2/card-fila2.css */
+
+.row-card {
+    background-color: white;
+    border: 1px solid #e0e0e0; 
+    border-radius: 8px;
+    padding: 15px; 
+    margin-bottom: 12px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra suave */
+}
+
+/* Asegura que el componente se comporte como un bloque y tenga margen */
+:host {
+  display: block;
+  margin-bottom: 0.75rem; /* Espaciado entre las tarjetas Card_Fila2 */
+}

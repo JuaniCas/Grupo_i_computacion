@@ -6,25 +6,14 @@
 
 <main class="container pb-5">
 	<div class="card shadow-sm">
-		<div class="tile d-flex align-items-center">
-			<div class="ico"><i class="bi bi-person-x"></i></div>
-			<div class="flex-grow-1">Bloquear clientes</div>
-			<a routerLink="/bloquear_clientes" class="stretched-link" aria-label="Ir a bloquear clientes"></a>
-		</div>
-		<div class="tile d-flex align-items-center">
-			<div class="ico"><i class="bi bi-person-check"></i></div>
-			<div class="flex-grow-1">Validar cuentas</div>
-			<a routerLink="/validar_cuentas" class="stretched-link" aria-label="Ir a validar cuentas"></a>
-		</div>
-		<div class="tile d-flex align-items-center">
-			<div class="ico"><i class="bi bi-clipboard-check"></i></div>
-			<div class="flex-grow-1">Pedidos</div>
-			<a routerLink="/empleados_pedidos" class="stretched-link" aria-label="Ir a pedidos"></a>
-		</div>
-		<div class="tile d-flex align-items-center">
-			<div class="ico"><i class="bi bi-check-square"></i></div>
-			<div class="flex-grow-1">Verificar stock</div>
-			<a routerLink="/verificar_stock" class="stretched-link" aria-label="Ir a verificar stock"></a>
-		</div>
+        @for (item of empleadoTiles; track item.link) {
+            <app-card_base [link]="item.link">
+                
+                <div class="tile d-flex align-items-center">
+                    <div class="ico"><i class="bi {{ item.icon }}"></i></div>
+                    <div class="flex-grow-1">{{ item.title }}</div>
+                    </div>
+            </app-card_base>
+        }
 	</div>
 </main>

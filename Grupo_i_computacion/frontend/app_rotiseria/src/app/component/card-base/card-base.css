@@ -1,0 +1,11 @@
+/* src/app/component/card_base/card_base.css */
+
+/* El contenedor principal debe ser relativo para que el stretched-link funcione */
+.card-wrapper {
+    position: relative;
+}
+
+/* NOTA: Todos los estilos de diseño (.tile, .row-card, .btn-mini, etc.)
+  AHORA deben copiarse directamente en el CSS de la página que usa la Card_Base,
+  o en un archivo global, ya que la Card_Base ya no los contiene.
+*/

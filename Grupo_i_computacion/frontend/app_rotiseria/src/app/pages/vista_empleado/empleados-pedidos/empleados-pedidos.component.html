@@ -1,20 +1,20 @@
-<header class="app container top d-flex align-items-center justify-content-center position-relative">
-	<a routerLink="/pagina_principal_empleados" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
-	<strong>Pedidos</strong>
-	<img src="assets/maradona_avatar.png" class="position-absolute end-0 me-2 avatar" alt="">
-</header>
+<header-adm-emp
+  [title]="'Pedidos'"
+  [avatarSrc]="'assets/maradona_avatar.png'"
+  [closeLink]="'/pagina_principal_empleados'"
+></header-adm-emp>
 
 <main class="app container pb-5">
 	<div class="card-wrap shadow-sm">
-		   <div class="tile d-flex align-items-center">
-			   <div class="ico"><i class="bi bi-pencil-square"></i></div>
-			   <div class="flex-grow-1">Cargar pedidos</div>
-			   <a routerLink="/cargar_pedido" class="stretched-link" aria-label="Cargar pedidos"></a>
-		   </div>
-		<div class="tile d-flex align-items-center">
-			<div class="ico"><i class="bi bi-eye"></i></div>
-			<div class="flex-grow-1">Ver y actualizar estado de pedidos</div>
-			<a routerLink="/estado_pedidos" class="stretched-link" aria-label="Ver estado de pedidos"></a>
-		</div>
+        
+        @for (item of pedidoTiles; track item.link) {
+            <app-card_base [link]="item.link">
+                
+                <div class="tile d-flex align-items-center">
+                    <div class="ico"><i class="bi {{ item.icon }}"></i></div>
+                    <div class="flex-grow-1">{{ item.title }}</div>
+                </div>
+            </app-card_base>
+        }
 	</div>
 </main>

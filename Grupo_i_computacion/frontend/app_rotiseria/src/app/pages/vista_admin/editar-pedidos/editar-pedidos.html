@@ -1,47 +1,23 @@
 <header class="app container top d-flex align-items-center justify-content-center position-relative">
-  <a href="#"routerLink="/pedidos" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
+  <a routerLink="/pedidos" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
   <strong>Pedidos</strong>
   <img src="assets/avatar_admin.png" class="position-absolute end-0 me-2 avatar" alt="">
 </header>
 
 <main class="app container pb-5">
 
-  <div class="row-card d-flex justify-content-between align-items-start">
-    <div>
-      <div class="fw-semibold">Pedido #1</div>
-      <div class="small text-muted">Usuario:</div>
-      <div class="small text-muted">Dirección:</div>
-    </div>
-    <div class="d-flex gap-2">
-      <a class="btn btn-dark btn-sm btn-mini">Editar</a>
-      <a class="btn btn-danger btn-sm btn-mini">Eliminar</a>
-    </div>
-  </div>
-
-  <div class="row-card d-flex justify-content-between align-items-start">
-    <div>
-      <div class="fw-semibold">Pedido #2</div>
-      <div class="small text-muted">Usuario:</div>
-      <div class="small text-muted">Dirección:</div>
-    </div>
-    <div class="d-flex gap-2">
-      <a class="btn btn-dark btn-sm btn-mini">Editar</a>
-      <a class="btn btn-danger btn-sm btn-mini">Eliminar</a>
-    </div>
-  </div>
-
-  <div class="row-card d-flex justify-content-between align-items-start">
-    <div>
-      <div class="fw-semibold">Pedido #3</div>
-      <div class="small text-muted">Usuario:</div>
-      <div class="small text-muted">Dirección:</div>
-    </div>
-    <div class="d-flex gap-2">
-      <a class="btn btn-dark btn-sm btn-mini">Editar</a>
-      <a class="btn btn-danger btn-sm btn-mini">Eliminar</a>
-    </div>
-  </div>
-
+  @for (pedido of pedidos; track pedido.id) {
+    <app-card-fila2
+      [actions]="getActions(pedido)"
+    >
+      <div>
+        <div class="fw-semibold">{{ pedido.nombre }}</div>
+        <div class="small text-muted">Usuario: {{ pedido.usuario }}</div>
+        <div class="small text-muted">Dirección: {{ pedido.direccion }}</div>
+      </div>
+    </app-card-fila2>
+  }
+  
   <nav class="mt-3" aria-label="Paginación">
     <ul class="pagination pagination-sm justify-content-center">
       <li class="page-item active"><span class="page-link">1</span></li>
@@ -52,4 +28,5 @@
       <li class="page-item"><a class="page-link" href="#">17</a></li>
     </ul>
   </nav>
+
 </main>

@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+
 @Component({
   selector: 'app-estado-pedidos',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+
+  imports: [CommonModule, RouterModule], 
   templateUrl: './estado-pedidos.component.html',
   styleUrls: ['./estado-pedidos.component.css']
 })

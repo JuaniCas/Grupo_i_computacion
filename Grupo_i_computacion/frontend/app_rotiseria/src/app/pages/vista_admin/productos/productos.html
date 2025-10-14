@@ -1,43 +1,23 @@
 <header class="app container top d-flex align-items-center justify-content-center position-relative">
-  <a href="#"routerLink="/pagina_principal_admin" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
+  <a routerLink="/pagina_principal_admin" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
   <strong>Productos</strong> 
   <div class="position-absolute end-0 me-2 d-flex align-items-center gap-2">
     <img src="assets/avatar_admin.png" class="avatar" alt="avatar admin">
-    <a href="#"routerLink="/editar_productos" class="btn btn-sm btn-edit">Editar</a>
+    <a routerLink="/editar_productos" class="btn btn-sm btn-edit">Editar</a>
   </div>
 </header>
 
 <main class="app container pb-5">
-  <article class="row-card">
-    <div class="fw-semibold">Producto #1</div>
-    <div class="small text-muted">Categoría:</div>
-    <div class="small text-muted">Precio:</div>
-  </article>
-  <article class="row-card">
-    <div class="fw-semibold">Producto #2</div>
-    <div class="small text-muted">Categoría:</div>
-    <div class="small text-muted">Precio:</div>
-  </article>
-  <article class="row-card">
-    <div class="fw-semibold">Producto #3</div>
-    <div class="small text-muted">Categoría:</div>
-    <div class="small text-muted">Precio:</div>
-  </article>
-  <article class="row-card">
-    <div class="fw-semibold">Producto #4</div>
-    <div class="small text-muted">Categoría:</div>
-    <div class="small text-muted">Precio:</div>
-  </article>
-  <article class="row-card">
-    <div class="fw-semibold">Producto #5</div>
-    <div class="small text-muted">Categoría:</div>
-    <div class="small text-muted">Precio:</div>
-  </article>
-  <article class="row-card">
-    <div class="fw-semibold">Producto #6</div>
-    <div class="small text-muted">Categoría:</div>
-    <div class="small text-muted">Precio:</div>
-  </article>
+  
+  @for (producto of productos; track producto.id) {
+    <app-card-fila2>
+      <div>
+        <div class="fw-semibold">{{ producto.nombre }}</div>
+        <div class="small text-muted">Categoría: {{ producto.categoria }}</div>
+        <div class="small text-muted">Precio: ${{ producto.precio | number: '1.2-2' }}</div>
+      </div>
+    </app-card-fila2>
+  }
 
   <nav class="mt-3" aria-label="Paginación">
     <ul class="pagination pagination-sm justify-content-center">

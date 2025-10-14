@@ -6,37 +6,16 @@
 </header>
 
 <main class="app container pb-5">
-  <div class="row-card">
-    <div class="d-flex justify-content-between">
-      <div>
-        <div class="fw-semibold">Cliente #1</div>
-        <div class="small text-muted">Mail:</div>
-        <div class="small text-muted">Dirección:</div>
-      </div>
-  <button type="button" class="red-link btn btn-link p-0 m-0">Bloquear</button>
-    </div>
-  </div>
 
-  <div class="row-card">
-    <div class="d-flex justify-content-between">
-      <div>
-        <div class="fw-semibold">Cliente #2</div>
-        <div class="small text-muted">Mail:</div>
-        <div class="small text-muted">Dirección:</div>
-      </div>
-  <button type="button" class="red-link btn btn-link p-0 m-0">Bloquear</button>
-    </div>
-  </div>
-
-  <div class="row-card">
-    <div class="d-flex justify-content-between">
-      <div>
-        <div class="fw-semibold">Cliente #3</div>
-        <div class="small text-muted">Mail:</div>
-        <div class="small text-muted">Dirección:</div>
-      </div>
-  <button type="button" class="red-link btn btn-link p-0 m-0">Bloquear</button>
-    </div>
-  </div>
-
+  @for (cliente of clientes; track cliente.id) {
+      <app-card_fila 
+          [actions]="getClienteActions(cliente.id)"
+      >
+        <div content>
+            <div class="fw-semibold">{{ cliente.nombre }}</div>
+            <div class="small text-muted">Mail: {{ cliente.mail }}</div>
+            <div class="small text-muted">Dirección: {{ cliente.direccion }}</div>
+        </div>
+      </app-card_fila>
+  }
 </main>

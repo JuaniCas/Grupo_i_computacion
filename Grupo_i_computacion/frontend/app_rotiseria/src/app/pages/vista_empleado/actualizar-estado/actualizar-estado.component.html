@@ -1,22 +1,27 @@
 <header class="app container top d-flex align-items-center justify-content-center position-relative">
-  <a routerLink="/estado_pedidos" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
-  <strong>Estado de pedido</strong>
-  <img src="assets/maradona_avatar.png" class="position-absolute end-0 me-2 avatar" alt="">
+ <a routerLink="/estado_pedidos" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
+ <strong>Estado de pedido</strong>
+ <img src="assets/maradona_avatar.png" class="position-absolute end-0 me-2 avatar" alt="">
 </header>
 
 <main class="app container pb-5">
-  <div class="text-center fw-semibold my-3">Pedido #1</div>
+ <div class="text-center fw-semibold my-3">Pedido #1</div>
 
-  <div class="mb-4">
-    <div class="small fw-semibold">Usuario:</div>
-    <div class="small fw-semibold">Dirección:</div>
-  </div>
+  <div class="card shadow-sm p-4">
+    
+    <div class="mb-4">
+      <div class="small fw-semibold">Usuario: Nombre del cliente</div>
+      <div class="small fw-semibold">Dirección: Calle Falsa 123</div>
+    </div>
 
-  <div class="vstack gap-3">
-  <button class="pill pill-pend w-100" (click)="setEstado('pendiente')" [class.active]="estado==='pendiente'">Pendiente</button>
-  <button class="pill pill-prep w-100" (click)="setEstado('preparacion')" [class.active]="estado==='preparacion'">En preparación</button>
-  <button class="pill pill-listo w-100" (click)="setEstado('listo')" [class.active]="estado==='listo'">Listo</button>
-  <button class="pill pill-ent w-100" (click)="setEstado('entregado')" [class.active]="estado==='entregado'">Entregado</button>
-  <button class="pill pill-cancel w-100" (click)="setEstado('cancelado')" [class.active]="estado==='cancelado'">Cancelar</button>
+    <hr class="mb-4">
+    
+    <div class="vstack gap-3">
+     <button class="pill pill-pend w-100" (click)="setEstado('pendiente')" [class.active]="estado==='pendiente'">Pendiente</button>
+     <button class="pill pill-prep w-100" (click)="setEstado('preparacion')" [class.active]="estado==='preparacion'">En preparación</button>
+     <button class="pill pill-listo w-100" (click)="setEstado('listo')" [class.active]="estado==='listo'">Listo</button>
+     <button class="pill pill-ent w-100" (click)="setEstado('entregado')" [class.active]="estado==='entregado'">Entregado</button>
+     <button class="pill pill-cancel w-100" (click)="setEstado('cancelado')" [class.active]="estado==='cancelado'">Cancelar</button>
+    </div>
   </div>
 </main>

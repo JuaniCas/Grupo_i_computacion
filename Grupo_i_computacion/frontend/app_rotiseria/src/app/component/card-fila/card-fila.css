@@ -1,0 +1,14 @@
+
+.row-card { 
+    background: #fff; 
+    border: 1px solid var(--line); 
+    border-radius: 8px; 
+    padding: .85rem; 
+    
+    
+    margin-bottom: .6rem; 
+}
+.red-link {
+    color: var(--bs-red, #dc3545) !important; /* Forzamos el color rojo */
+}
+

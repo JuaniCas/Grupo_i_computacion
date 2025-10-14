@@ -1,0 +1,34 @@
+<div class="row-card">
+  <div class="d-flex justify-content-between align-items-start">
+    
+    <ng-content select="[content]"></ng-content>
+
+    <div class="d-flex gap-2">
+      @for (action of actions; track action.text) {
+        
+        @if (action.link) {
+            <a 
+              [routerLink]="action.link" 
+              [class]="action.class"
+              class="btn btn-sm btn-mini"
+              role="button"
+            >
+              {{ action.text }}
+            </a>
+        } 
+        
+        @if (action.callback) {
+            <button 
+              type="button" 
+              [class]="action.class" 
+              class="btn btn-sm btn-mini"
+              (click)="action.callback()"
+            >
+              {{ action.text }}
+            </button>
+        }
+      }
+    </div>
+    </div>
+
+  </div>

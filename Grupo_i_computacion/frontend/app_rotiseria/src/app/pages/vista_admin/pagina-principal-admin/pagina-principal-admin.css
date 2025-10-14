@@ -1,13 +1,47 @@
-:root{ --bg:#f5f3ee; --card:#ffffff; --line:#e9e5df; --text:#1f1f1f; }
-body{ background:var(--bg); color:var(--text); }
-.top{ height:64px; }
-.avatar{ width:44px; height:44px; border-radius:50%; object-fit:cover; }
+:root{ 
+    --bg:#f5f3ee; 
+    --card:#ffffff; 
+    --line:#e9e5df; 
+    --text:#1f1f1f; 
+}
+
+body{ 
+    background:var(--bg); 
+    color:var(--text); 
+}
+
+
+.card-list {
+    background: var(--card); 
+    border-radius: 8px;
+    overflow: hidden; 
+    border: 1px solid var(--line);
+}
+
+
 .tile{
-	background:var(--card); border:0; border-radius:0; padding:1.1rem 1rem;
+	background:var(--card); 
+    border:0; 
+    border-radius:0; 
+    padding:1.1rem 1rem;
 	position:relative;
 }
-.tile + .tile{ border-top:1px solid var(--line); }
+
+
+.card-list app-card_base + app-card_base .tile { 
+    border-top:1px solid var(--line); 
+}
+
 .tile .ico{
-	width:40px;height:40px;border-radius:10px;background:#f3f3f3;
-	display:grid;place-items:center; margin-right:.75rem; font-size:1.25rem;
+	width:40px;
+    height:40px;
+    border-radius:10px;
+
+    background:#f3f3f3; 
+	
+    color:var(--text); 
+	display:grid;
+    place-items:center; 
+    margin-right:.75rem; 
+    font-size:1.25rem;
 }

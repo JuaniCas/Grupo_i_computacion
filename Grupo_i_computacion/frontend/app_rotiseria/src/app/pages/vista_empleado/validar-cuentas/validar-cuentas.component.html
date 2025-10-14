@@ -1,32 +1,32 @@
 <header class="app container top d-flex align-items-center justify-content-center position-relative">
 	<a routerLink="/pagina_principal_empleados" class="position-absolute start-0 ms-2 text-dark">
-		<i class="bi bi-chevron-left"></i></a>
+		<i class="bi bi-chevron-left"></i>
+    </a>
 	<strong>Validar cuenta</strong>
 	<img src="assets/maradona_avatar.png"
-			 alt="Empleado" class="position-absolute end-0 me-2" style="width:32px;height:32px;border-radius:50%;object-fit:cover">
+			 alt="Empleado" class="position-absolute end-0 me-2 avatar">
 </header>
 
 <main class="app container pb-5">
-	<div class="row-card d-flex justify-content-between align-items-start" *ngFor="let cliente of clientes">
-		<div>
-			<div class="fw-semibold">Cliente en espera #{{cliente.numero}}</div>
-			<div class="small text-muted">Mail:</div>
-			<div class="small text-muted">Dirección:</div>
-		</div>
-		<div class="d-flex gap-2">
-			<button class="btn btn-sm btn-success">Aceptar</button>
-			<button class="btn btn-sm btn-danger">Denegar</button>
-		</div>
-	</div>
 
-	<nav class="mt-4" aria-label="Paginación">
+  @for (cliente of clientes; track cliente.id) {
+    <app-card_fila 
+        [actions]="getClienteActions(cliente.id)"
+    >
+      <div content>
+          <div class="fw-semibold">{{ cliente.nombre }}</div>
+          <div class="small text-muted">Mail: {{ cliente.mail }}</div>
+          <div class="small text-muted">Dirección: {{ cliente.direccion }}</div>
+      </div>
+    </app-card_fila>
+  }
+	
+  <nav class="mt-4" aria-label="Paginación">
 		<ul class="pagination pagination-sm justify-content-center">
 			<li class="page-item active"><button type="button" class="page-link">1</button></li>
 			<li class="page-item"><button type="button" class="page-link">2</button></li>
 			<li class="page-item"><button type="button" class="page-link">3</button></li>
-			<li class="page-item disabled"><span class="page-link">…</span></li>
-			<li class="page-item"><button type="button" class="page-link">16</button></li>
-			<li class="page-item"><button type="button" class="page-link">17</button></li>
 		</ul>
 	</nav>
+
 </main>

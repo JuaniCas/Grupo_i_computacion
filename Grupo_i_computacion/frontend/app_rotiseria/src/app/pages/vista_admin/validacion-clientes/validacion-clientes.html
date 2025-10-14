@@ -1,57 +1,22 @@
 <header class="app container top d-flex align-items-center justify-content-center position-relative">
-  <a href="#"routerLink="/clientes" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
+  <a routerLink="/clientes" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
   <strong>Clientes</strong>
   <img src="assets/avatar_admin.png" class="position-absolute end-0 me-2 avatar" alt="">
 </header>
 
 <main class="app container pb-5">
-  <article class="row-card d-flex justify-content-between align-items-start">
-    <div>
-      <div class="fw-semibold">Cliente en espera #1</div>
-      <div class="small text-muted">Mail:</div>
-      <div class="small text-muted">Dirección:</div>
-    </div>
-    <div class="d-flex gap-2">
-      <button class="btn btn-sm btn-success">Aceptar</button>
-      <button class="btn btn-sm btn-danger">Denegar</button>
-    </div>
-  </article>
-
-  <article class="row-card d-flex justify-content-between align-items-start">
-    <div>
-      <div class="fw-semibold">Cliente en espera #2</div>
-      <div class="small text-muted">Mail:</div>
-      <div class="small text-muted">Dirección:</div>
-    </div>
-    <div class="d-flex gap-2">
-      <button class="btn btn-sm btn-success">Aceptar</button>
-      <button class="btn btn-sm btn-danger">Denegar</button>
-    </div>
-  </article>
-
-  <article class="row-card d-flex justify-content-between align-items-start">
-    <div>
-      <div class="fw-semibold">Cliente en espera #3</div>
-      <div class="small text-muted">Mail:</div>
-      <div class="small text-muted">Dirección:</div>
-    </div>
-    <div class="d-flex gap-2">
-      <button class="btn btn-sm btn-success">Aceptar</button>
-      <button class="btn btn-sm btn-danger">Denegar</button>
-    </div>
-  </article>
-
-  <article class="row-card d-flex justify-content-between align-items-start">
-    <div>
-      <div class="fw-semibold">Cliente en espera #4</div>
-      <div class="small text-muted">Mail:</div>
-      <div class="small text-muted">Dirección:</div>
-    </div>
-    <div class="d-flex gap-2">
-      <button class="btn btn-sm btn-success">Aceptar</button>
-      <button class="btn btn-sm btn-danger">Denegar</button>
-    </div>
-  </article>
+  
+  @for (cliente of clientesPendientes; track cliente.id) {
+    <app-card-fila2
+      [actions]="getActions(cliente)"
+    >
+      <div>
+        <div class="fw-semibold">{{ cliente.nombre }}</div>
+        <div class="small text-muted">Mail: {{ cliente.email }}</div>
+        <div class="small text-muted">Dirección: {{ cliente.direccion }}</div>
+      </div>
+    </app-card-fila2>
+  }
 
   <nav class="mt-4" aria-label="Paginación">
     <ul class="pagination pagination-sm justify-content-center">

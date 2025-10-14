@@ -4,36 +4,17 @@
   [closeLink]="'/iniciar_sesion'"
 ></header-adm-emp>
 
-<main class="container pb-5">
-  <div class="card shadow-sm">
-    <div class="tile d-flex align-items-center">
-      <div class="ico"><i class="bi bi-percent"></i></div>
-      <div class="flex-grow-1">Promociones</div>
-      <a href="#"routerLink="/promociones" class="stretched-link" aria-label="Ir a Promociones"></a>
-    </div>
-
-    <div class="tile d-flex align-items-center">
-      <div class="ico"><i class="bi bi-person-plus"></i></div>
-      <div class="flex-grow-1">Clientes</div>
-      <a href="#"routerLink="/clientes" class="stretched-link" aria-label="Ir a Clientes"></a>
-    </div>
-
-    <div class="tile d-flex align-items-center">
-      <div class="ico"><i class="bi bi-person-badge"></i></div>
-      <div class="flex-grow-1">Empleados</div>
-      <a href="#"routerLink="/empleados" class="stretched-link" aria-label="Ir a Empleados"></a>
-    </div>
-
-    <div class="tile d-flex align-items-center">
-      <div class="ico"><i class="bi bi-clipboard-check"></i></div>
-      <div class="flex-grow-1">Pedidos</div>
-      <a href="#"routerLink="/pedidos" class="stretched-link" aria-label="Ir a Pedidos"></a>
-    </div>
-
-    <div class="tile d-flex align-items-center">
-      <div class="ico"><i class="bi bi-shop"></i></div>
-      <div class="flex-grow-1">Productos</div>
-      <a href="#"routerLink="/productos" class="stretched-link" aria-label="Ir a Productos"></a>
-    </div>
+<main class="app container pb-5">
+  <div class="card-list"> 
+    
+    @for (item of elementos_admin; track item.titulo) {
+      <app-card_base [link]="item.ruta">
+        
+        <div class="tile d-flex align-items-center">
+          <div class="ico"><i class="bi {{ item.icono }}"></i></div>
+          <div class="flex-grow-1">{{ item.titulo }}</div>
+        </div>
+      </app-card_base>
+    }
   </div>
 </main>

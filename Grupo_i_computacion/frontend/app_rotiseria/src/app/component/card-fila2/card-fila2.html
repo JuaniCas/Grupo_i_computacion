@@ -1,0 +1,21 @@
+<section class="row-card d-flex justify-content-between align-items-center">
+  
+  <div class="flex-grow-1 me-2">
+    <ng-content></ng-content>
+  </div>
+
+  <div class="d-flex gap-2 flex-wrap justify-content-end flex-shrink-0">
+    @for (button of actions; track button.text) {
+      @if (button.link) {
+        <a [routerLink]="button.link" [class]="button.class">
+          {{ button.text }}
+        </a>
+      } @else if (button.action) {
+        <button (click)="button.action()" [class]="button.class">
+          {{ button.text }}
+        </button>
+      }
+    }
+  </div>
+
+</section>

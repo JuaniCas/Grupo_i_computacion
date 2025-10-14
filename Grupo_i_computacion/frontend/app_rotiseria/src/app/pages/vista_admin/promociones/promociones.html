@@ -1,39 +1,46 @@
 <header class="app container top d-flex align-items-center justify-content-center position-relative">
-  <a href="#"routerLink="/pagina_principal_admin" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
-  <strong>Promociones</strong>
-  <img src="assets/avatar_admin.png" class="position-absolute end-0 me-2 avatar" alt="foto admin">
+  <a routerLink="/pagina_principal_admin" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
+  
+  <strong>Clientes</strong>
+  
+  <div class="position-absolute end-0 me-2 d-flex align-items-center gap-2">
+    <img src="assets/avatar_admin.png"  class="avatar" alt="foto admin">
+    <a routerLink="/validacion_clientes" class="chip-val text-success text-decoration-none">Validación</a>
+  </div>
 </header>
-
 <main class="app container pb-5">
-  <section class="row-card d-flex justify-content-between align-items-center">
-    <div class="fw-semibold">2x1 en Pizzas</div>
-    <div class="d-flex gap-2">
-      <a class="btn btn-sm btn-outline-dark">Editar</a>
-      <a class="btn btn-sm btn-outline-secondary">Desactivar</a>
-      <a class="btn btn-sm btn-mail text-white">Enviar Mail</a>
-    </div>
-  </section>
 
-  <section class="row-card d-flex justify-content-between align-items-center">
-    <div class="fw-semibold">Menú del día</div>
-    <div class="d-flex gap-2">
-      <a class="btn btn-sm btn-outline-dark">Editar</a>
-      <a class="btn btn-sm btn-outline-secondary">Desactivar</a>
-      <a class="btn btn-sm btn-mail text-white">Enviar Mail</a>
-    </div>
-  </section>
-
-  <section class="row-card d-flex justify-content-between align-items-center">
-    <div class="fw-semibold">Happy hour -%15</div>
-    <div class="d-flex gap-2">
-      <a class="btn btn-sm btn-outline-dark">Editar</a>
-      <a class="btn btn-sm btn-outline-secondary">Desactivar</a>
-      <a class="btn btn-sm btn-mail text-white">Enviar Mail</a>
-    </div>
-  </section>
-
+  @for (promo of promociones; track promo.id) {
+    <section class="row-card d-flex justify-content-between align-items-center">
+      
+      <div>
+        <div class="fw-semibold">{{ promo.nombre }}</div>
+        <div class="small text-muted">Estado: 
+          <span [ngClass]="{'text-success': promo.activa, 'text-danger': !promo.activa}">
+            {{ promo.activa ? 'Activa' : 'Inactiva' }}
+          </span>
+        </div>
+      </div>
+      
+      <div class="d-flex gap-2 flex-wrap justify-content-end">
+        
+        <a routerLink="/editar_promocion/{{promo.id}}" class="btn btn-sm btn-outline-dark">Editar</a>
+        
+        <button 
+          (click)="toggleActiva(promo.id, promo.nombre)" 
+          [ngClass]="promo.activa ? 'btn-outline-secondary' : 'btn-success'" 
+          class="btn btn-sm"
+        >
+          {{ promo.activa ? 'Desactivar' : 'Activar' }}
+        </button>
+        
+        <button (click)="sendMail(promo.nombre)" class="btn btn-sm btn-mail text-white">Enviar Mail</button>
+      </div>
+    </section>
+  }
+  
   <div class="mt-4 d-grid">
-    <button class="btn btn-outline-secondary">+ Crear nueva promo</button>
+    <a routerLink="/crear_promocion" class="btn btn-outline-secondary">+ Crear nueva promo</a>
   </div>
 
   <nav class="mt-4" aria-label="Paginación">
@@ -41,9 +48,6 @@
       <li class="page-item active"><span class="page-link">1</span></li>
       <li class="page-item"><a class="page-link" href="#">2</a></li>
       <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item disabled"><span class="page-link">…</span></li>
-      <li class="page-item"><a class="page-link" href="#">16</a></li>
-      <li class="page-item"><a class="page-link" href="#">17</a></li>
     </ul>
   </nav>
 </main>

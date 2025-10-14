@@ -1,39 +1,26 @@
 <header class="app container top d-flex align-items-center justify-content-center position-relative">
-  <a href="#" routerLink="/pagina_principal_admin" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
+  <a routerLink="/pagina_principal_admin" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
   <strong>Clientes</strong>
   <div class="position-absolute end-0 me-2 d-flex align-items-center gap-2">
     <img src="assets/avatar_admin.png"  class="avatar" alt="foto admin">
-    <a href="#"routerLink="/validacion_clientes" class="chip-val text-success text-decoration-none">Validaciónnnnn</a>
+    <a routerLink="/validacion_clientes" class="chip-val text-success text-decoration-none">Validación</a>
   </div>
 </header>
 
 <main class="app container pb-5">
-  <article class="row-card d-flex justify-content-between">
-    <div>
-      <div class="fw-semibold">Cliente #1</div>
-      <div class="small text-muted">Mail:</div>
-      <div class="small text-muted">Dirección:</div>
-    </div>
-    <a href="#" class="link-red">Bloquear</a>
-  </article>
 
-  <article class="row-card d-flex justify-content-between">
-    <div>
-      <div class="fw-semibold">Cliente #2</div>
-      <div class="small text-muted">Mail:</div>
-      <div class="small text-muted">Dirección:</div>
-    </div>
-    <a href="#" class="link-red">Bloquear</a>
-  </article>
-
-  <article class="row-card d-flex justify-content-between">
-    <div>
-      <div class="fw-semibold">Cliente #3</div>
-      <div class="small text-muted">Mail:</div>
-      <div class="small text-muted">Dirección:</div>
-    </div>
-    <a href="#" class="link-red">Bloquear</a>
-  </article>
+  @for (cliente of clientes; track cliente.id) {
+    <app-card-fila2
+      [actions]="getActions(cliente)"
+    >
+      <div>
+        <div class="fw-semibold">{{ cliente.nombre }}</div>
+        <div class="small text-muted">Mail: {{ cliente.email }}</div>
+        <div class="small text-muted">Dirección: {{ cliente.direccion }}</div>
+        <div *ngIf="cliente.bloqueado" class="small text-danger fw-bold">BLOQUEADO</div>
+      </div>
+    </app-card-fila2>
+  }
 
 
   <nav class="mt-4" aria-label="Paginación">
@@ -41,9 +28,6 @@
       <li class="page-item active"><span class="page-link">1</span></li>
       <li class="page-item"><a class="page-link" href="#">2</a></li>
       <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item disabled"><span class="page-link">…</span></li>
-      <li class="page-item"><a class="page-link" href="#">16</a></li>
-      <li class="page-item"><a class="page-link" href="#">17</a></li>
     </ul>
   </nav>
 </main>
