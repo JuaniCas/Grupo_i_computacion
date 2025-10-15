@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { Card_Fila2, CardFila2ActionButton } from '../../../component/card-fila2/card-fila2';
+import { AppHeaderComponent } from '../../../component/header-opc/header-opc';
 
 interface Cliente {
     id: number;
@@ -18,7 +19,7 @@ interface Cliente {
   selector: 'app-clientes',
   standalone: true,
 
-  imports: [CommonModule, RouterModule, Card_Fila2],
+  imports: [CommonModule, RouterModule, Card_Fila2, AppHeaderComponent],
   templateUrl: './clientes.html',
   styleUrl: './clientes.css'
 })

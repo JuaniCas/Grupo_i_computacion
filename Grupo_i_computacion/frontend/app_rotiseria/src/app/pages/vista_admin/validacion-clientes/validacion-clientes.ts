@@ -4,6 +4,7 @@ import { RouterLink, RouterModule } from '@angular/router';
 
 
 import { Card_Fila2, CardFila2ActionButton } from '../../../component/card-fila2/card-fila2';
+import { AppHeaderComponent } from '../../../component/header-opc/header-opc';
 
 
 interface ClientePendiente {
@@ -16,7 +17,7 @@ interface ClientePendiente {
 @Component({
   selector: 'app-validacion-clientes',
   standalone: true, 
-  imports: [CommonModule, RouterModule, Card_Fila2],
+  imports: [CommonModule, RouterModule, Card_Fila2, AppHeaderComponent],
   templateUrl: './validacion-clientes.html',
   styleUrl: './validacion-clientes.css'
 })

@@ -1,0 +1,19 @@
+<header class="app container d-flex align-items-center justify-content-between position-relative py-3">
+    
+    <a [routerLink]="returnlink" class="position-absolute start-0 ms-3 text-dark">
+        <i class="bi bi-chevron-left fs-4"></i>
+    </a>
+
+    <strong class="mx-auto text-center fs-5">{{ title }}</strong>
+
+    <div class="d-flex align-items-center gap-2">
+        
+        <img [src]="profileImage" class="avatar" alt="Foto de perfil">
+        
+        <a *ngIf="showButton" [routerLink]="buttonLink" class="chip-val text-success text-decoration-none">
+            {{ buttonText }}
+        </a>
+
+    </div>
+
+</header>

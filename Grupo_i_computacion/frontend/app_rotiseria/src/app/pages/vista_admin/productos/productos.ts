@@ -4,6 +4,7 @@ import { RouterLink, RouterModule } from '@angular/router';
 
 
 import { Card_Fila2 } from '../../../component/card-fila2/card-fila2'; 
+import { AppHeaderComponent } from '../../../component/header-opc/header-opc';
 
 interface Producto {
     id: number;
@@ -16,7 +17,7 @@ interface Producto {
   selector: 'app-productos',
   standalone: true,
 
-  imports: [CommonModule, RouterModule, Card_Fila2], 
+  imports: [CommonModule, RouterModule, Card_Fila2, AppHeaderComponent], 
   templateUrl: './productos.html',
   styleUrl: './productos.css'
 })

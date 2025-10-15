@@ -1,0 +1,51 @@
+
+.app.container.top {
+   
+    height: 60px !important; 
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    
+   
+    display: flex !important;
+    align-items: center !important; 
+    justify-content: center !important; 
+    
+    margin: 0 !important;
+    position: relative !important; 
+}
+
+
+.app.container.top .position-absolute {
+    top: 50% !important; 
+    transform: translateY(-50%) !important; 
+}
+
+
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+
+.row-card {
+    background-color: white;
+    border: 1px solid #e0e0e0; 
+    border-radius: 8px;
+    padding: 15px; 
+    margin-bottom: 12px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+}
+
+
+.btn-mail {
+    background-color: #f7a83d; 
+    border-color: #f7a83d;
+}
+.btn-mail:hover {
+    background-color: #e09431;
+    border-color: #e09431;
+}

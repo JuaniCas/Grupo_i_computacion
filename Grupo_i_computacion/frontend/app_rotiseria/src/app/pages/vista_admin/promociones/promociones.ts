@@ -1,8 +1,7 @@
-
-
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 import { RouterModule } from '@angular/router'; 
+import { AppHeaderComponent } from '../../../component/header-opc/header-opc';
 
 interface Promocion {
     id: number;
@@ -14,7 +13,7 @@ interface Promocion {
   selector: 'app-promociones',
   standalone: true,
 
-  imports: [CommonModule, RouterModule], 
+  imports: [CommonModule, RouterModule, AppHeaderComponent], 
   templateUrl: './promociones.html',
   styleUrl: './promociones.css' 
 })

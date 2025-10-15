@@ -1,11 +1,11 @@
-<header class="app container top d-flex align-items-center justify-content-center position-relative">
-  <a routerLink="/pagina_principal_admin" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
-  <strong>Empleados</strong>
-  <div class="position-absolute end-0 me-2 d-flex align-items-center gap-2">
-    <img src="assets/avatar_admin.png" class="avatar" alt="avatar">
-    <a routerLink="/editar_empleados" class="btn btn-danger btn-sm">Editar</a>
-  </div>
-</header>
+<header-opc
+  title="Empleados"
+  returnlink="/pagina_principal_admin"
+  profileImage="assets/avatar_admin.png"
+  [showButton]="true"
+  buttonText="editar"
+  buttonLink="/editar_empleados"
+></header-opc>
 
 <main class="app container pb-5">
   

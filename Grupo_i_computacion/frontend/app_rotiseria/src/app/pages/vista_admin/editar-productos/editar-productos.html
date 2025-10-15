@@ -1,11 +1,11 @@
-<header class="app container top d-flex align-items-center justify-content-center position-relative">
-  <a routerLink="/productos" class="position-absolute start-0 ms-2 text-dark"><i class="bi bi-chevron-left"></i></a>
-  <strong>Productos</strong>
-  <div class="position-absolute end-0 me-2 d-flex align-items-center gap-2">
-    <img src="assets/avatar_admin.png" class="avatar" alt="avatar admin">
-    <a routerLink="/agregar_producto" class="btn btn-success btn-sm"><i class="bi bi-plus-lg me-1"></i>Agregar</a>
-  </div>
-</header>
+<header-opc
+  title="Editar Productos"
+  returnlink="/productos"
+  profileImage="assets/avatar_admin.png"
+  [showButton]="true"
+  buttonText="+ Agregar"
+  buttonLink="/agregar_producto"
+></header-opc>
 
 <main class="app container pb-5">
 

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
-import { RouterLink, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 
 import { Card_Fila2 } from '../../../component/card-fila2/card-fila2'; 
+import { AppHeaderComponent } from '../../../component/header-opc/header-opc';
 
 interface Pedido {
     id: number;
@@ -15,7 +16,7 @@ interface Pedido {
 @Component({
   selector: 'app-pedidos',
   standalone: true,
-  imports: [CommonModule, RouterModule, Card_Fila2], 
+  imports: [CommonModule, RouterModule, Card_Fila2, AppHeaderComponent], 
   templateUrl: './pedidos.html',
   styleUrl: './pedidos.css'
 })
