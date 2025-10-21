@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 from flask_mail import Mail
-
+from flask_cors import CORS
 
 import os
 
@@ -21,6 +21,8 @@ def create_app():
     app = Flask(__name__)
     load_dotenv()
 
+    CORS(app)
+    
     if not os.path.exists(os.getenv("DATABASE_PATH")):
         os.makedirs(os.getenv("DATABASE_PATH"))
     
