@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { ErrorPage } from './pages/error-page/error-page';
+import { authsessionGuard } from './guards/authsession-guard';
 
 export const routes: Routes = [
 
@@ -35,16 +36,16 @@ export const routes: Routes = [
     {path: 'validar_cuentas', loadComponent: () => import('./pages/vista_empleado/validar-cuentas/validar-cuentas.component').then(m => m.ValidarCuentasComponent)},
     {path: 'verificar_stock', loadComponent: () => import('./pages/vista_empleado/verificar-stock/verificar-stock.component').then(m => m.VerificarStockComponent)},
     // Vista Admin
-    {path: 'clientes', loadComponent: () => import('./pages/vista_admin/clientes/clientes').then(m => m.Clientes)},
-    {path: 'editar_empleados', loadComponent: () => import('./pages/vista_admin/editar-empleados/editar-empleados').then(m => m.EditarEmpleados)},
-    {path: 'editar_pedidos', loadComponent: () => import('./pages/vista_admin/editar-pedidos/editar-pedidos').then(m => m.EditarPedidos)},
-    {path: 'editar_productos', loadComponent: () => import('./pages/vista_admin/editar-productos/editar-productos').then(m => m.EditarProductos)},
-    {path: 'empleados', loadComponent: () => import('./pages/vista_admin/empleados/empleados').then(m => m.Empleados)},
-    {path: 'pagina_principal_admin', loadComponent: () => import('./pages/vista_admin/pagina-principal-admin/pagina-principal-admin').then(m => m.PaginaPrincipalAdmin)},
-    {path: 'pedidos', loadComponent: () => import('./pages/vista_admin/pedidos/pedidos').then(m => m.Pedidos)},
-    {path: 'productos', loadComponent: () => import('./pages/vista_admin/productos/productos').then(m => m.Productos)},
-    {path: 'promociones', loadComponent: () => import('./pages/vista_admin/promociones/promociones').then(m => m.Promociones)},
-    {path: 'validacion_clientes', loadComponent: () => import('./pages/vista_admin/validacion-clientes/validacion-clientes').then(m => m.ValidacionClientes)},
+    {path: 'clientes', loadComponent: () => import('./pages/vista_admin/clientes/clientes').then(m => m.Clientes), canActivate: [authsessionGuard]},
+    {path: 'editar_empleados', loadComponent: () => import('./pages/vista_admin/editar-empleados/editar-empleados').then(m => m.EditarEmpleados), canActivate: [authsessionGuard]},
+    {path: 'editar_pedidos', loadComponent: () => import('./pages/vista_admin/editar-pedidos/editar-pedidos').then(m => m.EditarPedidos), canActivate: [authsessionGuard]},
+    {path: 'editar_productos', loadComponent: () => import('./pages/vista_admin/editar-productos/editar-productos').then(m => m.EditarProductos), canActivate: [authsessionGuard]},
+    {path: 'empleados', loadComponent: () => import('./pages/vista_admin/empleados/empleados').then(m => m.Empleados), canActivate: [authsessionGuard]},
+    {path: 'pagina_principal_admin', loadComponent: () => import('./pages/vista_admin/pagina-principal-admin/pagina-principal-admin').then(m => m.PaginaPrincipalAdmin), canActivate: [authsessionGuard]},
+    {path: 'pedidos', loadComponent: () => import('./pages/vista_admin/pedidos/pedidos').then(m => m.Pedidos), canActivate: [authsessionGuard]},
+    {path: 'productos', loadComponent: () => import('./pages/vista_admin/productos/productos').then(m => m.Productos), canActivate: [authsessionGuard]},
+    {path: 'promociones', loadComponent: () => import('./pages/vista_admin/promociones/promociones').then(m => m.Promociones), canActivate: [authsessionGuard]},
+    {path: 'validacion_clientes', loadComponent: () => import('./pages/vista_admin/validacion-clientes/validacion-clientes').then(m => m.ValidacionClientes), canActivate: [authsessionGuard]},
 
     {path: 'error', component: ErrorPage},
     {path: '', redirectTo: 'inicio_app', pathMatch: 'full'},

@@ -9,13 +9,9 @@ export class Auth {
   
   private http = inject(HttpClient);
 
-  url = 'http://localhost:4200';
+  url = 'http://localhost:5000';
 
-  login(): Observable<any>{
-    let dataLogin = {
-      email: "alumno@UrlSegment.edu.ar",
-      password: "123456"
-    }
+  login(dataLogin:LoginRequest): Observable<any>{
     return this.http.post(this.url + '/auth/login', dataLogin);
   }
 

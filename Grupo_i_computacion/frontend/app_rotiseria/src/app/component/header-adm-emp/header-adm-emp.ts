@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 @Component({
   selector: 'header-adm-emp',
@@ -14,4 +14,11 @@ export class PageHeaderComponent {
   @Input() avatarSrc = '';
   @Input() closeLink: string | any[] | null = null;
   
+  constructor(private router: Router) {}
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    this.router.navigateByUrl('/iniciar_sesion');
+  }
 }

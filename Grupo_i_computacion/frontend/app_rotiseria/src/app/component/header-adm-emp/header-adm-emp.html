@@ -11,11 +11,12 @@
   </div>
 
   
-  <ng-container *ngIf="closeLink as link">
+  <ng-container *ngIf="closeLink">
     <a
       class="btn btn-outline-secondary btn-sm ms-auto"
-      [routerLink]="link"
-      aria-label="Ir a {{ (title || 'página anterior') }}"
+      (click)="logout()"
+      style="cursor: pointer;"
+      aria-label="Cerrar sesión"
     >
       <i class="bi bi-x-lg"></i>
     </a>
