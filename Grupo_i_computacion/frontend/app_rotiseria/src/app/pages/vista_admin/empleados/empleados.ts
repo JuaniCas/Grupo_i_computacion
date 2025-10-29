@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core'; 
 import { CommonModule } from '@angular/common'; 
 import { RouterLink, RouterModule } from '@angular/router';
 
-
-import { Card_Fila2, CardFila2ActionButton } from '../../../component/card-fila2/card-fila2';
 import { AppHeaderComponent } from '../../../component/header-opc/header-opc';
-
+import { VerEmpleadosComponent } from '../../../component/empleados/ver-empleados/ver-empleados';
+// 👈 Importamos la nueva componente ABM (asegúrate de que esta ruta sea correcta)
+import { AbmComponent } from '../../../component/abm.component/abm.component'; 
+import { Card_Fila2 } from '../../../component/card-fila2/card-fila2';
 
 interface Empleado {
     id: number;
@@ -17,36 +18,36 @@ interface Empleado {
 @Component({
   selector: 'app-empleados',
   standalone: true, 
-
-  imports: [CommonModule, RouterModule, Card_Fila2, AppHeaderComponent],
+  // 👈 Añadimos AbmComponent a los imports
+  imports: [CommonModule, RouterModule, Card_Fila2, AppHeaderComponent, AbmComponent, VerEmpleadosComponent],
   templateUrl: './empleados.html',
   styleUrl: './empleados.css'
 })
 export class Empleados {
 
+    // 👈 Referencia a la modal ahora usa AbmComponent
+    @ViewChild('addEditModal') addEditModal!: AbmComponent;
 
-    empleados: Empleado[] = [
-        { id: 1, nombre: 'Ana García', mail: 'ana@mail.com', cargo: 'Gerente' },
-        { id: 2, nombre: 'Javier López', mail: 'javier@mail.com', cargo: 'Cocinero Principal' },
-        { id: 3, nombre: 'Laura Martínez', mail: 'laura@mail.com', cargo: 'Repartidora' },
-        { id: 4, nombre: 'Pedro Sánchez', mail: 'pedro@mail.com', cargo: 'Atención al Cliente' },
-    ];
+    constructor() {}
 
-    eliminarEmpleado(id: number, nombre: string): void {
-        if (confirm(`¿Estás seguro de que quieres eliminar al empleado: ${nombre}?`)) {
+    // Función para abrir la modal de AGREGAR (llamada por el nuevo botón en el HTML)
+    openAddModal(): void {
+        if (this.addEditModal) {
+            // Configuramos la modal para la acción de Agregar Empleado
+            this.addEditModal.title = 'Agregar Nuevo Empleado';
+            this.addEditModal.btnText = 'Crear';
+            
+            // Asignamos los Placeholders (títulos)
+            this.addEditModal.field1Placeholder = 'Nombre';
+            this.addEditModal.field2Placeholder = 'Email';
+            this.addEditModal.field3Placeholder = 'Rol';
+            
+            // Limpiamos los valores iniciales
+            this.addEditModal.field1Value = '';
+            this.addEditModal.field2Value = '';
+            this.addEditModal.field3Value = '';
 
-            this.empleados = this.empleados.filter(e => e.id !== id);
-            console.log(`Empleado ${nombre} eliminado.`);
+            this.addEditModal.open(); // Abrimos la modal
         }
-    }
-
-    getActions(empleado: Empleado): CardFila2ActionButton[] {
-        return [
-            {
-                text: 'Eliminar',
-                action: () => this.eliminarEmpleado(empleado.id, empleado.nombre),
-                class: 'btn btn-sm btn-danger' 
-            }
-        ];
     }
 }

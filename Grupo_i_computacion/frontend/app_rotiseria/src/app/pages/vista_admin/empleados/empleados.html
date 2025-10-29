@@ -2,33 +2,18 @@
   title="Empleados"
   returnlink="/pagina_principal_admin"
   profileImage="assets/avatar_admin.png"
-  [showButton]="true"
-  buttonText="editar"
-  buttonLink="/editar_empleados"
+  [showButton]="false"  buttonText="Regresar"
+  buttonLink="/pagina_principal_admin"
 ></header-opc>
 
 <main class="app container pb-5">
-  
-  @for (empleado of empleados; track empleado.id) {
-    <app-card-fila2
-      [actions]="getActions(empleado)"
-    >
-      <div>
-        <div class="fw-semibold mb-1">{{ empleado.nombre }}</div>
-        <div class="small text-muted">Mail: {{ empleado.mail }}</div>
-        <div class="small text-muted">Cargo: {{ empleado.cargo }}</div>
-      </div>
-    </app-card-fila2>
-  }
-  
-  <nav class="mt-3" aria-label="Paginación">
-    <ul class="pagination pagination-sm justify-content-center">
-      <li class="page-item active"><span class="page-link">1</span></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item disabled"><span class="page-link">…</span></li>
-      <li class="page-item"><a class="page-link" href="#">16</a></li>
-      <li class="page-item"><a class="page-link" href="#">17</a></li>
-    </ul>
-  </nav>
+
+<div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-success" (click)="openAddModal()">Agregar</button>
+</div>
+
+<app-ver-empleados></app-ver-empleados>
+
+<app-abm #addEditModal></app-abm>
+
 </main>
