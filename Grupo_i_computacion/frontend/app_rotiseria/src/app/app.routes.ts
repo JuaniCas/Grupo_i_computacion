@@ -41,6 +41,7 @@ export const routes: Routes = [
     {path: 'editar_pedidos', loadComponent: () => import('./pages/vista_admin/editar-pedidos/editar-pedidos').then(m => m.EditarPedidos), canActivate: [authsessionGuard]},
     {path: 'editar_productos', loadComponent: () => import('./pages/vista_admin/editar-productos/editar-productos').then(m => m.EditarProductos), canActivate: [authsessionGuard]},
     {path: 'empleados', loadComponent: () => import('./pages/vista_admin/empleados/empleados').then(m => m.Empleados), canActivate: [authsessionGuard]},
+    {path: 'empleado/:id/:tipo_op', loadComponent: () => import('./pages/vista_admin/empleado/empleado').then(m => m.Empleado), canActivate: [authsessionGuard]},
     {path: 'pagina_principal_admin', loadComponent: () => import('./pages/vista_admin/pagina-principal-admin/pagina-principal-admin').then(m => m.PaginaPrincipalAdmin), canActivate: [authsessionGuard]},
     {path: 'pedidos', loadComponent: () => import('./pages/vista_admin/pedidos/pedidos').then(m => m.Pedidos), canActivate: [authsessionGuard]},
     {path: 'productos', loadComponent: () => import('./pages/vista_admin/productos/productos').then(m => m.Productos), canActivate: [authsessionGuard]},
