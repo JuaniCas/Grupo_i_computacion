@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
-
-// Importamos la interfaz de la tarjeta para usarla en getActions
 import { Card_Fila2, CardFila2ActionButton } from '../../../component/card-fila2/card-fila2'; 
+import { Usuarios } from '../../../services/usuarios';
 
 interface Empleado {
-    id: number;
+    id_usuario: number;
     nombre: string;
-    mail: string;
-    cargo: string;
+    apellido: string;
+    email: string;
+    celular: string;
 }
 
 @Component({
@@ -22,64 +22,68 @@ interface Empleado {
 })
 export class VerEmpleadosComponent implements OnInit {
 
-    // Lista completa (simula los datos del backend)
-    arrayEmpleados: Empleado[] = [
-        { id: 1, nombre: 'Ana García', mail: 'ana@mail.com', cargo: 'Gerente' },
-        { id: 2, nombre: 'Javier López', mail: 'javier@mail.com', cargo: 'Cocinero Principal' },
-        { id: 3, nombre: 'Laura Martínez', mail: 'laura@mail.com', cargo: 'Repartidora' },
-        { id: 4, nombre: 'Pedro Sánchez', mail: 'pedro@mail.com', cargo: 'Atención al Cliente' },
-    ];
-    
+    arrayEmpleados: Empleado[] = [];
     empleados: Empleado[] = []; 
     nombreABuscar: string = '';
 
-    constructor(private router: Router) {}
+    constructor(
+        private router: Router,
+        private usuariosService: Usuarios
+    ) {}
 
     ngOnInit(): void {
-        this.empleados = [...this.arrayEmpleados];
-    }
-    
-    // Función requerida para el template, que no hace nada (void function)
-    editarEmpleado(id: number): void {
-        // Por ahora, nada
-        console.log(`Acción Editar (ID: ${id}) - Inactiva`);
+
+        this.cargarEmpleados();
+
     }
 
-    // Función requerida para el template, que no hace nada (void function)
+    cargarEmpleados(): void {
+        this.usuariosService.getUsuarios().subscribe({
+            next: (data) => {
+                this.arrayEmpleados = data[0];
+                this.empleados = [...this.arrayEmpleados];
+
+                console.log('Empleados cargados:', this.empleados);
+            },
+            error: (error) => {
+                console.error('Error al cargar empleados:', error);
+            }
+        });
+    }
+
     eliminarEmpleado(id: number, nombre: string): void {
-        // Por ahora, nada
+        // Por ahora nada
         console.log(`Acción Eliminar (ID: ${id}) - Inactiva`);
     }
 
-    // Función de filtro/búsqueda (se mantiene activa)
     buscar(): void {
         const nombreBuscado = this.nombreABuscar.toLowerCase();
         
         if (nombreBuscado.length > 0) {
             this.empleados = this.arrayEmpleados.filter(
-                e => e.nombre.toLowerCase().includes(nombreBuscado)
+                e => {
+                    const nombreCompleto = `${e.nombre} ${e.apellido}`.toLowerCase();
+                    return nombreCompleto.includes(nombreBuscado);
+                }
             );
         } else {
             this.empleados = [...this.arrayEmpleados];
         }
     }
 
-    // 🌟 FUNCIÓN CLAVE: Crea el array de botones de forma segura en TS
     getActions(empleado: Empleado): CardFila2ActionButton[] {
         return [
             {
                 text: 'Editar',
-                // Dejamos el link para que sea un <A> (routerLink), pero es un placeholder
-                link: '/empleados/editar/' + empleado.id, 
+                link: `/empleado/${empleado.id_usuario}/Editar`, 
                 class: 'btn btn-sm btn-primary'
             },
+            
             {
                 text: 'Eliminar',
-                // 💥 CORREGIDO: Acción de función lambda vacía, no hace nada, 
-                // pero cumple con la interfaz y evita el error del parser.
                 action: () => { 
                     // No hace nada
-                    this.eliminarEmpleado(empleado.id, empleado.nombre);
+                    this.eliminarEmpleado(empleado.id_usuario, empleado.nombre);
                 }, 
                 class: 'btn btn-sm btn-danger' 
             }

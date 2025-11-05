@@ -1,15 +1,13 @@
-// src/app/component/card-fila2/card-fila2.ts
 
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Para directivas como *ngIf, @for
-import { RouterModule } from '@angular/router'; // Para routerLink en botones
+import { CommonModule } from '@angular/common'; 
+import { RouterModule } from '@angular/router'; 
 
-// Interfaz para definir la estructura de los botones de acción
 export interface CardFila2ActionButton {
   text: string;
-  class: string;     // Clase CSS para el botón (ej: 'btn btn-sm btn-danger')
-  link?: string;     // URL para routerLink (si es un enlace)
-  action?: () => void; // Función a ejecutar (si es un botón de acción)
+  class: string;     
+  link?: string;     
+  action?: () => void; 
 }
 
 @Component({

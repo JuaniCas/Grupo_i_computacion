@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { CardHamburguesaDoble } from '../../component/card-hamburguesa-doble/card-hamburguesa-doble';
+import { HeaderCliente } from '../../component/header-cliente/header-cliente';
 
 
 @Component({
   selector: 'app-pagina-principal',
-  imports: [RouterLink, CardHamburguesaDoble],
+  imports: [ CardHamburguesaDoble, HeaderCliente],
   templateUrl: './pagina-principal.html',
   styleUrl: './pagina-principal.css'
 })

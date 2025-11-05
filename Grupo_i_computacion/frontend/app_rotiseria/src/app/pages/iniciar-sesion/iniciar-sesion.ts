@@ -29,15 +29,31 @@ export class IniciarSesion {
       next: (res:LoginResponse) => {
         alert('Login exitoso');
         console.log("respuesta login: ", res);
-        localStorage.setItem('token', res.access_token);
-        localStorage.setItem('email', res.email);
-        this.router.navigateByUrl('/pagina_principal_admin');
+
+        const rol = this.authService.getUserRole();
+
+        switch(rol){
+          case 'admin':
+            this.router.navigate(['/pagina_principal_admin']);
+            break;
+          case 'cliente':
+            this.router.navigate(['/pagina_principal']);
+            break;
+          case 'empleado':
+            this.router.navigate(['/pagina_principal_empleados']);
+            break;
+          default:
+            console.warn('Rol de usuario no reconocido', rol);
+            this.router.navigate(['/iniciar_sesion']);
+            break;
+        }
       },
       error: (err) => {
         alert('usuario o contraseña incorrectos');
         console.log("error en el login: ", err);
         localStorage.removeItem('token');
-        localStorage.removeItem('email');
+        localStorage.removeItem('rol');
+        localStorage.removeItem('id_usuario');
       }
     });
   }

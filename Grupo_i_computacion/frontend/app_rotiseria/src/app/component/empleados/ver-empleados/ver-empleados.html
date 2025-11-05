@@ -1,17 +1,17 @@
 <div class="mb-3">
-    <input type="text" class="form-control" placeholder="Buscar empleado por nombre" 
+    <input type="text" class="form-control" placeholder="Buscar empleado" 
            [(ngModel)]="nombreABuscar" (input)="buscar()"> 
 </div>
 
 
-@for (empleado of empleados; track empleado.id) {
+@for (empleado of empleados; track empleado.id_usuario) {
     <app-card-fila2
         [actions]="getActions(empleado)"
     >
         <div>
-            <div class="fw-semibold mb-1">{{ empleado.nombre }}</div>
-            <div class="small text-muted">Mail: {{ empleado.mail }}</div>
-            <div class="small text-muted">Cargo: {{ empleado.cargo }}</div>
+            <div class="fw-semibold mb-1">{{ empleado.nombre }} {{empleado.apellido}}</div>
+            <div class="small text-muted">Email: {{ empleado.email }}</div>
+            <div class="small text-muted">Celular: {{ empleado.celular }}</div>
         </div>
     </app-card-fila2>
 }

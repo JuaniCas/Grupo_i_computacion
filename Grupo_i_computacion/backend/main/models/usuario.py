@@ -48,9 +48,10 @@ class usuarios(db.Model):
     def to_json_short(self):
         usuarios_json = {
             'id_usuario': self.id_usuario,
-            'rol': str(self.rol),
+            'email': str(self.email),
             'nombre': str(self.nombre),
             'apellido': str(self.apellido),
+            'celular': str(self.celular)
         }
         
         return usuarios_json

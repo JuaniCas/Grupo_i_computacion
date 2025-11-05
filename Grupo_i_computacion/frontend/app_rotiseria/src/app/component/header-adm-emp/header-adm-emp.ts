@@ -18,7 +18,8 @@ export class PageHeaderComponent {
 
   logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('email');
+    localStorage.removeItem('rol');
+    localStorage.removeItem('id_usuario');
     this.router.navigateByUrl('/iniciar_sesion');
   }
 }
