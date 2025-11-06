@@ -34,7 +34,7 @@ export class Usuarios {
       'Content-Type': 'application/json',
       'authorization': `Bearer ${token}`
     });
-    return this.http.get(this.url + '/usuarios/' + id, { headers: headers });
+    return this.http.get(this.url + '/usuario/' + id, { headers: headers });
   }
 
   crearUsuario(data: any): Observable<any>{
@@ -42,7 +42,7 @@ export class Usuarios {
   }
 
   actualizarUsuario(id: string, data: any): Observable<any>{
-    return this.http.put(this.url + '/usuarios/' + id, data, { headers: this.getAuthHeaders() });
+    return this.http.put(this.url + '/usuario/' + id, data, { headers: this.getAuthHeaders() });
   }
 
 }

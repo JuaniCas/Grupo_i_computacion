@@ -7,7 +7,7 @@ class usuarios(db.Model):
     nombre = db.Column(db.String(50))
     apellido = db.Column(db.String(50))
     email = db.Column(db.String(50), unique=True, index = True, nullable=False)
-    contraseña = db.Column(db.String(50), nullable=False)
+    contraseña = db.Column(db.String(255), nullable=False)
     direccion = db.Column(db.String(50))
     celular = db.Column(db.Integer)
     habilitado = db.Column(db.Boolean, default=False)
@@ -66,7 +66,6 @@ class usuarios(db.Model):
             'nombre': str(self.nombre),
             'apellido': str(self.apellido),
             'email': str(self.email),
-            'contraseña': str(self.contraseña),
             'direccion': str(self.direccion),
             'celular': self.celular,
             'habilitado': self.habilitado,

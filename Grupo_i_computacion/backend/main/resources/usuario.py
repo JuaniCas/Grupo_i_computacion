@@ -31,14 +31,17 @@ class Usuario(Resource):
     def put(self, id):
         usuario = db.session.query(UsuariosModel).get_or_404(id)
         data = request.get_json()
-        for key, value in data.items():
-            setattr(usuario, key, value)
         rol = get_jwt().get('rol')
         if rol == 'cliente' and usuario.id_usuario != get_jwt_identity():
             return {'message': 'No tienes permiso para modificar este usuario.'}, 403
+        nueva_contraseña = data.pop('contraseña', None)
+        for key, value in data.items():
+            setattr(usuario, key, value)
+        if nueva_contraseña and nueva_contraseña != '':
+            usuario.contraseña_plana = nueva_contraseña
         db.session.add(usuario)
         db.session.commit()
-        return usuario.to_json(), 201
+        return usuario.to_json_complete(), 201
 
         
         
