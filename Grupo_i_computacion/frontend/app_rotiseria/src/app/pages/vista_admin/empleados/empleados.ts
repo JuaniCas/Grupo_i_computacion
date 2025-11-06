@@ -16,7 +16,6 @@ interface Empleado {
 @Component({
   selector: 'app-empleados',
   standalone: true, 
-  // 👈 Añadimos AbmComponent a los imports
   imports: [CommonModule, RouterModule, AppHeaderComponent, VerEmpleadosComponent, RouterLink],
   templateUrl: './empleados.html',
   styleUrl: './empleados.css'

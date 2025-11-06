@@ -50,7 +50,7 @@ class Usuarios(Resource):
     def get(self):
         
         page = 1
-        per_page = 10
+        per_page = 5
         
         argumentos = request.args
         usuarios = db.session.query(UsuariosModel)

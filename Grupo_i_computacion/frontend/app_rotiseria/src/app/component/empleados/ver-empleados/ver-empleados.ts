@@ -11,6 +11,7 @@ interface Empleado {
     apellido: string;
     email: string;
     celular: string;
+    rol: string;
 }
 
 @Component({
@@ -26,6 +27,9 @@ export class VerEmpleadosComponent implements OnInit {
     empleados: Empleado[] = []; 
     nombreABuscar: string = '';
 
+    currentPage: number = 1;
+    totalPages: number = 1;
+
     constructor(
         private router: Router,
         private usuariosService: Usuarios
@@ -38,10 +42,21 @@ export class VerEmpleadosComponent implements OnInit {
     }
 
     cargarEmpleados(): void {
-        this.usuariosService.getUsuarios().subscribe({
-            next: (data) => {
-                this.arrayEmpleados = data[0];
-                this.empleados = [...this.arrayEmpleados];
+
+        const filtros = {
+            rol: 'empleado',
+            page: this.currentPage
+        };
+
+        this.usuariosService.getUsuarios(filtros).subscribe({
+            next: (respuestaCompleta) => {
+                const soloEmpleados = respuestaCompleta[0];
+
+                this.totalPages = respuestaCompleta[1].pages;
+                this.currentPage = respuestaCompleta[1].page;
+
+                this.arrayEmpleados = soloEmpleados;
+                this.buscar();
 
                 console.log('Empleados cargados:', this.empleados);
             },
@@ -51,9 +66,27 @@ export class VerEmpleadosComponent implements OnInit {
         });
     }
 
-    eliminarEmpleado(id: number, nombre: string): void {
-        // Por ahora nada
-        console.log(`Acción Eliminar (ID: ${id}) - Inactiva`);
+    eliminarEmpleado(empleado:any) {
+
+        const confirmar = confirm(`¿Estás seguro de que deseas eliminar al empleado ${empleado.nombre} ${empleado.apellido}?`);
+
+        if (!confirmar) {
+            return;
+        }
+
+        this.usuariosService.eliminarUsuario(empleado.id_usuario).subscribe({
+            next: (response) => {
+                alert(`Empleado ${empleado.nombre} ${empleado.apellido} eliminado correctamente.`);
+
+                this.empleados = this.empleados.filter(e => e.id_usuario !== empleado.id_usuario);
+                this.arrayEmpleados = this.arrayEmpleados.filter(e => e.id_usuario !== empleado.id_usuario);
+            },
+            error: (error) => {
+                console.error('Error al eliminar empleado:', error);
+                alert('Hubo un error al eliminar el empleado. Por favor, inténtalo de nuevo.');
+            }
+        });
+
     }
 
     buscar(): void {
@@ -82,11 +115,23 @@ export class VerEmpleadosComponent implements OnInit {
             {
                 text: 'Eliminar',
                 action: () => { 
-                    // No hace nada
-                    this.eliminarEmpleado(empleado.id_usuario, empleado.nombre);
+                    this.eliminarEmpleado(empleado);
                 }, 
                 class: 'btn btn-sm btn-danger' 
             }
         ];
+    }
+
+    goToPage(page: number): void {
+        if (page < 1 || page > this.totalPages || page === this.currentPage) {
+            return;
+        }
+
+        this.currentPage = page;
+        this.cargarEmpleados();
+    }
+
+    getPagesArray(): number[] {
+        return Array(this.totalPages).fill(0).map((x, i) => i + 1);
     }
 }

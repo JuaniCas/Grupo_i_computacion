@@ -1,0 +1,13 @@
+<header-opc
+  [title]="tipoOperacion === 'Alta' ? 'Crear Pedido' : 'Editar Pedido'"
+  returnlink="/pedidos"
+  profileImage="assets/avatar_admin.png"
+  [showButton]="false">
+</header-opc>
+
+<main class="app container pb-5">
+  <app-abm-pedidos
+    [idPedido]="idPedido!"
+    [tipoOperacion]="tipoOperacion!">
+  </app-abm-pedidos>
+</main>

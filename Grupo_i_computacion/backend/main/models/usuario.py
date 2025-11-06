@@ -14,7 +14,7 @@ class usuarios(db.Model):
     
     valoraciones = db.relationship('valoraciones', back_populates='usuarios', cascade='all, delete-orphan')
     notificaciones = db.relationship('notificaciones', back_populates='usuarios', cascade='all, delete-orphan')
-    pedidos = db.relationship('pedidos', back_populates='usuarios', cascade='all, delete-orphan')
+    pedidos = db.relationship('pedidos', back_populates='usuario', cascade='all, delete-orphan')
     
     @property
     def contraseña_plana(self):
@@ -51,6 +51,7 @@ class usuarios(db.Model):
             'email': str(self.email),
             'nombre': str(self.nombre),
             'apellido': str(self.apellido),
+            'rol': str(self.rol),
             'celular': str(self.celular)
         }
         

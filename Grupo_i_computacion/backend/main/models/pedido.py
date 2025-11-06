@@ -1,5 +1,6 @@
 from .. import db
 from datetime import datetime
+from main.models.usuario import usuarios
 
 class pedidos(db.Model):
     id_pedido = db.Column(db.Integer, primary_key = True)
@@ -9,7 +10,7 @@ class pedidos(db.Model):
     horario = db.Column(db.DateTime, nullable = False)
     estado = db.Column(db.String(50))
     
-    usuarios = db.relationship('usuarios', back_populates='pedidos', uselist=False, single_parent=True)
+    usuario = db.relationship('usuarios', back_populates='pedidos', uselist=False, single_parent=True)
     
     
     def __repr__(self):
@@ -32,6 +33,9 @@ class pedidos(db.Model):
         pedidos_json = {
             'id_pedido': self.id_pedido,
             'id_usuario': self.id_usuario,
+            'estado': str(self.estado),
+            'usuario': f'{self.usuario.nombre} {self.usuario.apellido}',
+            'direccion': self.usuario.direccion
         }
         
         return pedidos_json
@@ -43,7 +47,7 @@ class pedidos(db.Model):
         precio_total = json_pedido.get('precio_total')
         descripcion = json_pedido.get('descripcion')
         horario_str = json_pedido.get('horario')
-        horario = datetime.strptime(json_pedido.get('horario'), '%Y-%m-%d %H:%M:%S') if horario_str else None
+        horario = datetime.strptime(json_pedido.get('horario'), '%Y-%m-%dT%H:%M') if horario_str else None
         estado = json_pedido.get('estado')
         
         return pedidos(id_pedido=id_pedido, id_usuario=id_usuario, precio_total=precio_total, descripcion=descripcion, horario=horario, estado=estado)

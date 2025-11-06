@@ -1,0 +1,41 @@
+
+@for (pedido of pedidos; track pedido.id_pedido) {
+
+  <app-card-fila2 [actions]="getActions(pedido)">
+    
+    <h5 class="fw-semibold mb-1">Pedido #{{ pedido.id_pedido }}</h5>
+    <div class="small text-muted">Usuario: {{ pedido.usuario }}</div>
+    <div class="small text-muted">Dirección: {{ pedido.direccion }}</div>
+    <div class="small text-muted">Estado: {{ pedido.estado }}</div>
+    
+  </app-card-fila2>
+
+} @empty {
+  <p class="text-center mt-4">No hay pedidos para mostrar.</p>
+}
+
+<nav aria-label="Paginacion" class="mt-4">
+  <ul class="pagination pagination-sm justify-content-center">
+    
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a class="page-link" (click)="goToPage(currentPage - 1)" style="cursor: pointer;">
+        Anterior
+      </a>
+    </li>
+
+    @for (page of getPagesArray(); track page) {
+      <li class="page-item" [class.active]="page === currentPage">
+        <a class="page-link" (click)="goToPage(page)" style="cursor: pointer;">
+          {{ page }}
+        </a>
+      </li>
+    }
+
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <a class="page-link" (click)="goToPage(currentPage + 1)" style="cursor: pointer;">
+        Siguiente
+      </a>
+    </li>
+    
+  </ul>
+</nav>
